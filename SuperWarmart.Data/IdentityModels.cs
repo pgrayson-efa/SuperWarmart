@@ -35,6 +35,10 @@ namespace SuperWarmart.Data
 
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Zipcode> Zipcodes { get; set; }
+
+        public DbSet<State> States { get; set; }
+        public DbSet<InventoryItem> inventoryItems { get; set; }
+
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderLineItem> OrderLineItems { get; set; }
 
