@@ -18,12 +18,7 @@ namespace SuperWarmart.Model
         public string HomeAddress { get; set; }
         public string HomeCity { get; set; }
         public int HomeStateId { get; set; }
-
-
-        [ForeignKey(nameof(Zipcode))]
         public int HomeZipcodeId { get; set; }
-        public virtual Zipcode Zipcode { get; set; }
-
         public string PhoneNumber { get; set; }
     }
 }
