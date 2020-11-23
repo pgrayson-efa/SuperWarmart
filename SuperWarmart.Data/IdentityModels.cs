@@ -34,6 +34,8 @@ namespace SuperWarmart.Data
         }
 
         public DbSet<Customer> Customers { get; set; }
+        public DbSet<Zipcode> Zipcodes { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder

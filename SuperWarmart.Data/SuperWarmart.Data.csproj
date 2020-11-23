@@ -90,12 +90,9 @@
     <Compile Include="Migrations\202011222207595_InitialCreate.Designer.cs">
       <DependentUpon>202011222207595_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202011222327005_FixedErrors.cs" />
-    <Compile Include="Migrations\202011222327005_FixedErrors.Designer.cs">
-      <DependentUpon>202011222327005_FixedErrors.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Zipcode.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -104,9 +101,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202011222207595_InitialCreate.resx">
       <DependentUpon>202011222207595_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202011222327005_FixedErrors.resx">
-      <DependentUpon>202011222327005_FixedErrors.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

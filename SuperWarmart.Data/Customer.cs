@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +21,11 @@ namespace SuperWarmart.Data
         public string CompanyName { get; set; }
         [Required]
         public string HomeAddress { get; set; }
+        [Required]
         public string HomeCity { get; set; }
         [Required]
         public int HomeStateId { get; set; }
+        [Required]
         public int HomeZipcodeId { get; set; }
         [Required]
         public string PhoneNumber { get; set; }

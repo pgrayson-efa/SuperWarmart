@@ -57,10 +57,18 @@
     <Compile Include="CustomerCreate.cs" />
     <Compile Include="CustomerListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ZipcodeCreate.cs" />
+    <Compile Include="ZipcodeListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SuperWarmart.Data\SuperWarmart.Data.csproj">
+      <Project>{311C0BE4-467E-4B17-899D-B05FE2A4DB65}</Project>
+      <Name>SuperWarmart.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
