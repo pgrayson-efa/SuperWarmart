@@ -1,9 +1,9 @@
-namespace SuperWarmart.Data.Migrations
+﻿namespace SuperWarmart.Data.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class init : DbMigration
     {
         public override void Up()
         {
@@ -17,8 +17,9 @@ namespace SuperWarmart.Data.Migrations
                         LastName = c.String(nullable: false),
                         CompanyName = c.String(),
                         HomeAddress = c.String(nullable: false),
-                        HomeCity = c.String(),
+                        HomeCity = c.String(nullable: false),
                         HomeStateId = c.Int(nullable: false),
+                        HomeZipcodeId = c.Int(nullable: false),
                         PhoneNumber = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.CustomerId);
@@ -46,6 +47,16 @@ namespace SuperWarmart.Data.Migrations
                 .ForeignKey("dbo.ApplicationUser", t => t.ApplicationUser_Id)
                 .Index(t => t.IdentityRole_Id)
                 .Index(t => t.ApplicationUser_Id);
+            
+            CreateTable(
+                "dbo.State",
+                c => new
+                    {
+                        StateId = c.Int(nullable: false, identity: true),
+                        StateName = c.String(nullable: false),
+                        Abbr = c.String(nullable: false),
+                    })
+                .PrimaryKey(t => t.StateId);
             
             CreateTable(
                 "dbo.ApplicationUser",
@@ -93,6 +104,15 @@ namespace SuperWarmart.Data.Migrations
                 .ForeignKey("dbo.ApplicationUser", t => t.ApplicationUser_Id)
                 .Index(t => t.ApplicationUser_Id);
             
+            CreateTable(
+                "dbo.Zipcode",
+                c => new
+                    {
+                        ZipcodeId = c.Int(nullable: false, identity: true),
+                        VerifiedZipcode = c.String(nullable: false),
+                    })
+                .PrimaryKey(t => t.ZipcodeId);
+            
         }
         
         public override void Down()
@@ -105,9 +125,11 @@ namespace SuperWarmart.Data.Migrations
             DropIndex("dbo.IdentityUserClaim", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserRole", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserRole", new[] { "IdentityRole_Id" });
+            DropTable("dbo.Zipcode");
             DropTable("dbo.IdentityUserLogin");
             DropTable("dbo.IdentityUserClaim");
             DropTable("dbo.ApplicationUser");
+            DropTable("dbo.State");
             DropTable("dbo.IdentityUserRole");
             DropTable("dbo.IdentityRole");
             DropTable("dbo.Customer");
