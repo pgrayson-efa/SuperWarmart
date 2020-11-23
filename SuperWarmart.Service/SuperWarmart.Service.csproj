@@ -59,6 +59,8 @@
   <ItemGroup>
     <Compile Include="CustomerService.cs" />
     <Compile Include="InventoryItemService.cs" />
+    <Compile Include="OrderLineItemService.cs" />
+    <Compile Include="OrderService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StateService.cs" />
     <Compile Include="ZipcodeService.cs" />
