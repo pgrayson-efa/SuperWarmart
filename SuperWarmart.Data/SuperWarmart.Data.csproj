@@ -86,15 +86,17 @@
   <ItemGroup>
     <Compile Include="Customer.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\202011222207595_InitialCreate.cs" />
-    <Compile Include="Migrations\202011222207595_InitialCreate.Designer.cs">
-      <DependentUpon>202011222207595_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\202011231659508_init.cs" />
+    <Compile Include="Migrations\202011231659508_init.Designer.cs">
+      <DependentUpon>202011231659508_init.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202011231347513_NewAnnotation.cs" />
-    <Compile Include="Migrations\202011231347513_NewAnnotation.Designer.cs">
-      <DependentUpon>202011231347513_NewAnnotation.cs</DependentUpon>
+    <Compile Include="Migrations\202011231853385_addOrder.cs" />
+    <Compile Include="Migrations\202011231853385_addOrder.Designer.cs">
+      <DependentUpon>202011231853385_addOrder.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Order.cs" />
+    <Compile Include="OrderLineItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Zipcode.cs" />
   </ItemGroup>
@@ -103,11 +105,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202011222207595_InitialCreate.resx">
-      <DependentUpon>202011222207595_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202011231659508_init.resx">
+      <DependentUpon>202011231659508_init.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202011231347513_NewAnnotation.resx">
-      <DependentUpon>202011231347513_NewAnnotation.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202011231853385_addOrder.resx">
+      <DependentUpon>202011231853385_addOrder.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

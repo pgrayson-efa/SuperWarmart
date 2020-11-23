@@ -7,13 +7,13 @@ namespace SuperWarmart.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class NewAnnotation : IMigrationMetadata
+    public sealed partial class addOrder : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(NewAnnotation));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(addOrder));
         
         string IMigrationMetadata.Id
         {
-            get { return "202011231347513_NewAnnotation"; }
+            get { return "202011231853385_addOrder"; }
         }
         
         string IMigrationMetadata.Source

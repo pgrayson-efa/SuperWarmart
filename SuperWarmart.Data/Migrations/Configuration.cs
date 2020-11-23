@@ -10,7 +10,6 @@ namespace SuperWarmart.Data.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "SuperWarmart.Data.ApplicationDbContext";
         }
 
         protected override void Seed(SuperWarmart.Data.ApplicationDbContext context)
