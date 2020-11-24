@@ -12,7 +12,7 @@ namespace SuperWarmart.Data
         [Key]
         public int InventoryItemId { get; set; }
         [Required]
-        public int UPC { get; set; }
+        public string UPC { get; set; }
         [Required]
         public int CategoryId { get; set; }
         [Required]
@@ -22,7 +22,7 @@ namespace SuperWarmart.Data
         [Required]
         public string Description { get; set; }
         [Required]
-        public int Price { get; set; }
+        public double Price { get; set; }
         [Required]
         public int QuantityInStock { get; set; }
 

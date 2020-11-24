@@ -1,4 +1,5 @@
-﻿using SuperWarmart.Data;
+﻿
+using SuperWarmart.Data;
 using SuperWarmart.Model;
 using System;
 using System.Collections.Generic;
@@ -31,18 +32,18 @@ namespace SuperWarmart.Service
             };
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.inventoryItems.Add(entity);
+                ctx.InventoryItems.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
         }
-        public IEnumerable<InventoryItem> GetInventoryItem()
+        public IEnumerable<InventoryItemListItem> GetInventoryItem()
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var query = ctx.inventoryItems
+                var query = ctx.InventoryItems
                     .Select(
                     e =>
-                    new InventoryItem
+                    new InventoryItemListItem
                     {
                         InventoryItemId = e.InventoryItemId,
                         UPC = e.UPC,
