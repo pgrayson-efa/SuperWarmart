@@ -89,6 +89,7 @@ namespace SuperWarmart.Service
                     };
             }
         }
+        //Get Customer by Name
         public CustomerDetail GetCustomerByName(string lastName, string firstName)
         {
             using (var ctx = new ApplicationDbContext())
@@ -111,6 +112,7 @@ namespace SuperWarmart.Service
                     };
             }
         }
+        // Update Customer Info
         public bool UpdateCustomer(CustomerUpdate model)
         {
             using (var ctx = new ApplicationDbContext())

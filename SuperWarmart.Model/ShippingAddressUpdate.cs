@@ -9,11 +9,8 @@ using System.Threading.Tasks;
 
 namespace SuperWarmart.Model
 {
-    public class ShippingAddressListItem
+    public class ShippingAddressUpdate
     {
-        [Key]
-        public int ShippingAddressId { get; set; }
-
         [ForeignKey(nameof(Customer))]
         public int CustomerId { get; set; }
         [Required]

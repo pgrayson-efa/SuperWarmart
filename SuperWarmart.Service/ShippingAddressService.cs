@@ -10,8 +10,15 @@ namespace SuperWarmart.Service
 {
     public class ShippingAddressService
     {
-        //Create Shipping Address
-        public bool CreateShippingAddress(ShippingAddressCreate model)
+        private readonly Guid _userId;
+
+        public ShippingAddressService(Guid userId)
+        {
+            _userId = userId;
+        }
+
+        //Create a new Shipping Address
+        public async Task<bool> CreateShippingAddress(ShippingAddressCreate model)
         {
             var entity = new ShippingAddress()
             {
@@ -27,12 +34,91 @@ namespace SuperWarmart.Service
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.ShippingAddresses.Add(entity);
-                return ctx.SaveChanges() == 1;
+                return await ctx.SaveChangesAsync() == 1;
+            }
+        }
+
+        // Get all addresses
+        public IEnumerable<ShippingAddressListItem> GetShippingAddresses()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query = ctx
+                    .ShippingAddresses
+                    .Select(
+                            a =>
+                                new ShippingAddressListItem
+                                {
+                                    ShippingAddressId = a.ShippingAddressId,
+                                    CustomerId = a.CustomerId,
+                                    LocationName = a.LocationName,
+                                    StreetAddress = a.StreetAddress,
+                                    City = a.City,
+                                    StateId = a.StateId,
+                                    ZipcodeId = a.ZipcodeId
+                                });
+                return query.ToArray();
             }
         }
 
         // Get all addresses by Id
+        public IEnumerable<ShippingAddressListItem> GetShippingAddressesByCustomer(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query = ctx
+                    .ShippingAddresses
+                    .Where(c => c.CustomerId == id)
+                    .Select(
+                            a =>
+                                new ShippingAddressListItem
+                                {
+                                    ShippingAddressId = a.ShippingAddressId,
+                                    CustomerId = a.CustomerId,
+                                    LocationName = a.LocationName,
+                                    StreetAddress = a.StreetAddress,
+                                    City = a.City,
+                                    StateId = a.StateId,
+                                    ZipcodeId = a.ZipcodeId
+                                });
+                return query.ToArray();
+            }
+        }
 
+        public bool UpdateShippingAddress(int id, ShippingAddressUpdate model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .ShippingAddresses
+                    .Single(a => a.ShippingAddressId == id);
+                
+                entity.CustomerId = model.CustomerId;
+                entity.LocationName = model.LocationName;
+                entity.StreetAddress = model.StreetAddress;
+                entity.City = model.City;
+                entity.StateId = model.StateId;
+                entity.ZipcodeId = model.ZipcodeId;
 
+                return ctx.SaveChanges() == 1;
+            }
+        }
+        public bool DeleteShippingAddress(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .ShippingAddresses
+                    .Single(s => s.ShippingAddressId == id);
+
+                ctx.ShippingAddresses.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
+
+
 }
