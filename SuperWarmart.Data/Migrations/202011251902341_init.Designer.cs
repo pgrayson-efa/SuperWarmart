@@ -7,13 +7,13 @@ namespace SuperWarmart.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class UpdateUPCPrice : IMigrationMetadata
+    public sealed partial class init : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(UpdateUPCPrice));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(init));
         
         string IMigrationMetadata.Id
         {
-            get { return "202011241929367_UpdateUPC/Price"; }
+            get { return "202011251902341_init"; }
         }
         
         string IMigrationMetadata.Source

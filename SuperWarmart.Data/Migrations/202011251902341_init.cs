@@ -19,7 +19,7 @@
                         HomeAddress = c.String(nullable: false),
                         HomeCity = c.String(nullable: false),
                         HomeStateId = c.Int(nullable: false),
-                        HomeZipcodeId = c.Int(nullable: false),
+                        HomeZipCodeId = c.Int(nullable: false),
                         PhoneNumber = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.CustomerId);
@@ -34,11 +34,20 @@
                         StreetAddress = c.String(nullable: false),
                         City = c.String(nullable: false),
                         StateId = c.Int(nullable: false),
-                        ZipcodeId = c.Int(nullable: false),
+                        ZipCodeId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.ShippingAddressId)
                 .ForeignKey("dbo.Customer", t => t.CustomerId, cascadeDelete: true)
                 .Index(t => t.CustomerId);
+            
+            CreateTable(
+                "dbo.InventoryItemCategory",
+                c => new
+                    {
+                        CategoryId = c.Int(nullable: false, identity: true),
+                        CategoryName = c.String(nullable: false),
+                    })
+                .PrimaryKey(t => t.CategoryId);
             
             CreateTable(
                 "dbo.InventoryItem",
@@ -82,6 +91,15 @@
                         DateShipped = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.OrderId);
+            
+            CreateTable(
+                "dbo.OrderStatus",
+                c => new
+                    {
+                        StatusId = c.Int(nullable: false, identity: true),
+                        Status = c.String(nullable: false),
+                    })
+                .PrimaryKey(t => t.StatusId);
             
             CreateTable(
                 "dbo.IdentityRole",
@@ -164,13 +182,13 @@
                 .Index(t => t.ApplicationUser_Id);
             
             CreateTable(
-                "dbo.Zipcode",
+                "dbo.ZipCode",
                 c => new
                     {
-                        ZipcodeId = c.Int(nullable: false, identity: true),
-                        VerifiedZipcode = c.String(nullable: false),
+                        ZipCodeId = c.Int(nullable: false, identity: true),
+                        VerifiedZipCode = c.String(nullable: false),
                     })
-                .PrimaryKey(t => t.ZipcodeId);
+                .PrimaryKey(t => t.ZipCodeId);
             
         }
         
@@ -186,16 +204,18 @@
             DropIndex("dbo.IdentityUserRole", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserRole", new[] { "IdentityRole_Id" });
             DropIndex("dbo.ShippingAddress", new[] { "CustomerId" });
-            DropTable("dbo.Zipcode");
+            DropTable("dbo.ZipCode");
             DropTable("dbo.IdentityUserLogin");
             DropTable("dbo.IdentityUserClaim");
             DropTable("dbo.ApplicationUser");
             DropTable("dbo.State");
             DropTable("dbo.IdentityUserRole");
             DropTable("dbo.IdentityRole");
+            DropTable("dbo.OrderStatus");
             DropTable("dbo.Order");
             DropTable("dbo.OrderLineItem");
             DropTable("dbo.InventoryItem");
+            DropTable("dbo.InventoryItemCategory");
             DropTable("dbo.ShippingAddress");
             DropTable("dbo.Customer");
         }
