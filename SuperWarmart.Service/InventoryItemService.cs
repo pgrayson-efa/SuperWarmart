@@ -1,4 +1,5 @@
-﻿using SuperWarmart.Data;
+﻿
+using SuperWarmart.Data;
 using SuperWarmart.Model;
 using System;
 using System.Collections.Generic;
@@ -40,22 +41,41 @@ namespace SuperWarmart.Service
             using (var ctx = new ApplicationDbContext())
             {
                 var query = ctx.InventoryItems
-                        .Select(
-                            e =>
-                                new InventoryItemListItem
-                                {
-                                    InventoryItemId = e.InventoryItemId,
-                                    UPC = e.UPC,
-                                    CategoryId = e.CategoryId,
-                                    StockNumber = e.StockNumber,
-                                    ItemName = e.ItemName,
-                                    Description = e.Description,
-                                    Price = e.Price,
-                                    QuantityInStock = e.QuantityInStock
-                                }
-                        );
+                    .Select(
+                    e =>
+                    new InventoryItemListItem
+                    {
+                        InventoryItemId = e.InventoryItemId,
+                        UPC = e.UPC,
+                        CategoryId = e.CategoryId,
+                        StockNumber = e.StockNumber,
+                        ItemName = e.ItemName,
+                        Description = e.Description,
+                        Price = e.Price,
+                        QuantityInStock = e.QuantityInStock
+                    }
+                    );
 
                 return query.ToArray();
+            }
+        }
+        public bool DeleteInventoryItemById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = (from o in ctx.InventoryItems where o.InventoryItemId == id select o).SingleOrDefault();
+
+                if (entity == null)
+                {
+                    return false;
+                }
+                ctx.InventoryItems.Remove(entity);
+
+                if (ctx.SaveChanges() == 1)
+                {
+                    return true;
+                }
+                return false;
             }
         }
     }
