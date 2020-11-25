@@ -238,6 +238,7 @@
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InventoryItemController.cs" />
+    <Compile Include="Controllers\OrderLineItemController.cs" />
     <Compile Include="Controllers\StateController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />

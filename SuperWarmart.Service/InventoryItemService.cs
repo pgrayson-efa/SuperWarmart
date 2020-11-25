@@ -31,29 +31,29 @@ namespace SuperWarmart.Service
             };
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.inventoryItems.Add(entity);
+                ctx.InventoryItems.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
         }
-        public IEnumerable<InventoryItem> GetInventoryItem()
+        public IEnumerable<InventoryItemListItem> GetInventoryItem()
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var query = ctx.inventoryItems
-                    .Select(
-                    e =>
-                    new InventoryItem
-                    {
-                        InventoryItemId = e.InventoryItemId,
-                        UPC = e.UPC,
-                        CategoryId = e.CategoryId,
-                        StockNumber = e.StockNumber,
-                        ItemName = e.ItemName,
-                        Description = e.Description,
-                        Price = e.Price,
-                        QuantityInStock = e.QuantityInStock
-                    }
-                    );
+                var query = ctx.InventoryItems
+                        .Select(
+                            e =>
+                                new InventoryItemListItem
+                                {
+                                    InventoryItemId = e.InventoryItemId,
+                                    UPC = e.UPC,
+                                    CategoryId = e.CategoryId,
+                                    StockNumber = e.StockNumber,
+                                    ItemName = e.ItemName,
+                                    Description = e.Description,
+                                    Price = e.Price,
+                                    QuantityInStock = e.QuantityInStock
+                                }
+                        );
 
                 return query.ToArray();
             }

@@ -15,8 +15,8 @@ namespace SuperWarmart.WebAPI.Controllers
     {
         public IHttpActionResult Get()
         {
-            InventoryItemService inventoryItemService = CreateInventoryItemService();
-            var inventoryItems = inventoryItemService.GetInventoryItem();
+            InventoryItemService InventoryItemService = CreateInventoryItemService();
+            var inventoryItems = InventoryItemService.GetInventoryItem();
             return Ok(inventoryItems);
         }
         public IHttpActionResult Post(InventoryItemCreate inventoryItem)
