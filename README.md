@@ -1,5 +1,5 @@
 # SuperWarmart
-SuperWarmart is an ElevenFifty group .NET EntityFramework WebAPI project written in c#. It includes online links to supporting projecting planning documentation.
+SuperWarmart is an ElevenFifty group .NET EntityFramework WebAPI project written in c#. It includes online links to supporting project planning documentation.
 
 ## Installation
 
