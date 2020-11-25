@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SuperWarmart.Data
+namespace SuperWarmart.Model
 {
-    public class OrderLineItem
+    public class OrderLineItemDelete
     {
         public int OrderLineItemId { get; set; }
         public int OrderId { get; set; }

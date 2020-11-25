@@ -25,8 +25,6 @@ namespace SuperWarmart.Data
         public double Price { get; set; }
         [Required]
         public int QuantityInStock { get; set; }
-
-        // public virtual TotalAverageRating { get; set; }
     }
 }
 

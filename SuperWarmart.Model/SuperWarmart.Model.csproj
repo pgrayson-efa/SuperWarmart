@@ -95,6 +95,8 @@
     <Compile Include="InventoryItemCategoryListItem.cs" />
     <Compile Include="OrderStatusCreate.cs" />
     <Compile Include="OrderStatusListItem.cs" />
+    <Compile Include="OrderDelete.cs" />
+    <Compile Include="OrderLineItemDelete.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShippingAddressCreate.cs" />
     <Compile Include="ShippingAddressDetail.cs" />
