@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SuperWarmart.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -6,18 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SuperWarmart.Data
+namespace SuperWarmart.Model
 {
-    public class ShippingAddress
+    public class ShippingAddressUpdate
     {
-        [Key]
-        public int ShippingAddressId { get; set; }
-
-
         [ForeignKey(nameof(Customer))]
         public int CustomerId { get; set; }
-        public virtual Customer Customer { get; set; }
-
         [Required]
         [MinLength(1, ErrorMessage = "Need to enter something.")]
         [MaxLength(50, ErrorMessage = "Max length is 50 characters.")]
@@ -30,6 +25,5 @@ namespace SuperWarmart.Data
         public int StateId { get; set; }
         [Required]
         public int ZipCodeId { get; set; }
-
     }
 }

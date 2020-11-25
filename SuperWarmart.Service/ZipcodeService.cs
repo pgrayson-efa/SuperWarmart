@@ -8,40 +8,40 @@ using System.Threading.Tasks;
 
 namespace SuperWarmart.Service
 {
-    public class ZipcodeService
+    public class ZipCodeService
     {
         private readonly Guid _userId;
 
-        public ZipcodeService(Guid userId)
+        public ZipCodeService(Guid userId)
         {
             _userId = userId;
         }
-        public bool CreateZipcode(ZipcodeCreate model)
+        public bool CreateZipCode(ZipCodeCreate model)
         {
-            var entity = new Zipcode()
+            var entity = new ZipCode()
             {
-                ZipcodeId = model.ZipcodeId,
-                VerifiedZipcode = model.VerifiedZipcode
+                ZipCodeId = model.ZipCodeId,
+                VerifiedZipCode = model.VerifiedZipCode
             };
 
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.Zipcodes.Add(entity);
+                ctx.ZipCodes.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
         }
 
-        public IEnumerable<ZipcodeListItem> GetZipcode()
+        public IEnumerable<ZipCodeListItem> GetZipCode()
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var query = ctx.Zipcodes
+                var query = ctx.ZipCodes
                         .Select(
                             e =>
-                                new ZipcodeListItem
+                                new ZipCodeListItem
                                 {
-                                    ZipcodeId = e.ZipcodeId,
-                                    VerifiedZipcode = e.VerifiedZipcode
+                                    ZipCodeId = e.ZipCodeId,
+                                    VerifiedZipCode = e.VerifiedZipCode
                                 }
                         );
 

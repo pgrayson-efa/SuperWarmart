@@ -11,6 +11,9 @@ namespace SuperWarmart.Model
 {
     public class ShippingAddressListItem
     {
+        [Key]
+        public int ShippingAddressId { get; set; }
+
         [ForeignKey(nameof(Customer))]
         public int CustomerId { get; set; }
         [Required]
@@ -24,6 +27,6 @@ namespace SuperWarmart.Model
         [Required]
         public int StateId { get; set; }
         [Required]
-        public int ZipcodeId { get; set; }
+        public int ZipCodeId { get; set; }
     }
 }
