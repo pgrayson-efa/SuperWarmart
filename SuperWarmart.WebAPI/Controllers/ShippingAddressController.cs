@@ -62,15 +62,15 @@ namespace SuperWarmart.WebAPI.Controllers
 
         public IHttpActionResult DeleteShippingAddress(int id)
         {
-            var service = CreateShippingAddressService();
+            ShippingAddressService service = CreateShippingAddressService();
 
-            var result = service.DeleteShippingAddress(id);
+            var shippingAddresses = service.DeleteShippingAddress(id);
 
-            if (!service.DeleteShippingAddress(id))
-                return InternalServerError();
-
-            return Ok();
-
+            if (shippingAddresses == true)
+            {
+                return Ok(shippingAddresses);
+            }
+            return InternalServerError();
         }
 
 

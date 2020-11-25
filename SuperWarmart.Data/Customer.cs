@@ -26,7 +26,7 @@ namespace SuperWarmart.Data
         [Required]
         public int HomeStateId { get; set; }
         [Required]
-        public int HomeZipcodeId { get; set; }
+        public int HomeZipCodeId { get; set; }
         [Required]
         public string PhoneNumber { get; set; }
 

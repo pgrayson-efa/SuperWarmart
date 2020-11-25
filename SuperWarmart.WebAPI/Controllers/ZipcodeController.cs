@@ -11,31 +11,31 @@ using System.Web.Http;
 namespace SuperWarmart.WebAPI.Controllers
 {
     [Authorize]
-    public class ZipcodeController : ApiController
+    public class ZipCodeController : ApiController
     {
         public IHttpActionResult Get()
         {
-            ZipcodeService zipcodeService = CreateZipcodeService();
-            var zipcodes = zipcodeService.GetZipcode();
-            return Ok(zipcodes);
+            ZipCodeService zipCodeService = CreateZipCodeService();
+            var zipCodes = zipCodeService.GetZipCode();
+            return Ok(zipCodes);
         }
-        public IHttpActionResult Post(ZipcodeCreate zipcode)
+        public IHttpActionResult Post(ZipCodeCreate zipCode)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var service = CreateZipcodeService();
+            var service = CreateZipCodeService();
 
-            if (!service.CreateZipcode(zipcode))
+            if (!service.CreateZipCode(zipCode))
                 return InternalServerError();
 
             return Ok();
         }
-        private ZipcodeService CreateZipcodeService()
+        private ZipCodeService CreateZipCodeService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
-            var zipcodeService = new ZipcodeService(userId);
-            return zipcodeService;
+            var zipCodeService = new ZipCodeService(userId);
+            return zipCodeService;
         }
     }
 }

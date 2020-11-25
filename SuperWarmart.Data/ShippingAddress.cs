@@ -29,7 +29,7 @@ namespace SuperWarmart.Data
         [Required]
         public int StateId { get; set; }
         [Required]
-        public int ZipcodeId { get; set; }
+        public int ZipCodeId { get; set; }
 
     }
 }

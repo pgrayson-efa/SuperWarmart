@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace SuperWarmart.Model
 {
-    public class ZipcodeListItem
+    public class ZipCodeListItem
     {
-        public int ZipcodeId { get; set; }
-        public string VerifiedZipcode { get; set; }
+        public int ZipCodeId { get; set; }
+        public string VerifiedZipCode { get; set; }
     }
 }

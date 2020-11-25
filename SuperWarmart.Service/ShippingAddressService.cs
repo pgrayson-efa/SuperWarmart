@@ -28,7 +28,7 @@ namespace SuperWarmart.Service
                 StreetAddress = model.StreetAddress,
                 City = model.City,
                 StateId = model.StateId,
-                ZipcodeId = model.ZipcodeId
+                ZipCodeId = model.ZipCodeId
             };
 
             using (var ctx = new ApplicationDbContext())
@@ -55,7 +55,7 @@ namespace SuperWarmart.Service
                                     StreetAddress = a.StreetAddress,
                                     City = a.City,
                                     StateId = a.StateId,
-                                    ZipcodeId = a.ZipcodeId
+                                    ZipCodeId = a.ZipCodeId
                                 });
                 return query.ToArray();
             }
@@ -79,7 +79,7 @@ namespace SuperWarmart.Service
                                     StreetAddress = a.StreetAddress,
                                     City = a.City,
                                     StateId = a.StateId,
-                                    ZipcodeId = a.ZipcodeId
+                                    ZipCodeId = a.ZipCodeId
                                 });
                 return query.ToArray();
             }
@@ -99,7 +99,7 @@ namespace SuperWarmart.Service
                 entity.StreetAddress = model.StreetAddress;
                 entity.City = model.City;
                 entity.StateId = model.StateId;
-                entity.ZipcodeId = model.ZipcodeId;
+                entity.ZipCodeId = model.ZipCodeId;
 
                 return ctx.SaveChanges() == 1;
             }
@@ -108,14 +108,25 @@ namespace SuperWarmart.Service
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity =
-                    ctx
-                    .ShippingAddresses
-                    .Single(s => s.ShippingAddressId == id);
+                //var entity =
+                //    ctx
+                //    .ShippingAddresses
+                //    .Single(s => s.ShippingAddressId == id);
 
+                //ctx.ShippingAddresses.Remove(entity);
+
+                //return ctx.SaveChanges() == 1;
+                var entity = (from s in ctx.ShippingAddresses where s.ShippingAddressId == id select s).SingleOrDefault();
+                if (entity == null)
+                {
+                    return false;
+                }
                 ctx.ShippingAddresses.Remove(entity);
-
-                return ctx.SaveChanges() == 1;
+                if (ctx.SaveChanges() == 1)
+                {
+                    return true;
+                }
+                return false;
             }
         }
     }

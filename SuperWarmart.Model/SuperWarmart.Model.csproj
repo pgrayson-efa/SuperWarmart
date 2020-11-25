@@ -105,8 +105,8 @@
     <Compile Include="ShippingAddressUpdate.cs" />
     <Compile Include="StateCreate.cs" />
     <Compile Include="StateListItem.cs" />
-    <Compile Include="ZipcodeCreate.cs" />
-    <Compile Include="ZipcodeListItem.cs" />
+    <Compile Include="ZipCodeCreate.cs" />
+    <Compile Include="ZipCodeListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

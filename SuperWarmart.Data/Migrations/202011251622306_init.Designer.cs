@@ -13,7 +13,7 @@ namespace SuperWarmart.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202011241948492_init"; }
+            get { return "202011251622306_init"; }
         }
         
         string IMigrationMetadata.Source

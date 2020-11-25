@@ -94,7 +94,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShippingAddressService.cs" />
     <Compile Include="StateService.cs" />
-    <Compile Include="ZipcodeService.cs" />
+    <Compile Include="ZipCodeService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -29,7 +29,7 @@ namespace SuperWarmart.Service
                 HomeAddress = model.HomeAddress,
                 HomeCity = model.HomeCity,
                 HomeStateId = model.HomeStateId,
-                HomeZipcodeId = model.HomeZipcodeId,
+                HomeZipCodeId = model.HomeZipCodeId,
                 PhoneNumber = model.PhoneNumber
             };
 
@@ -58,7 +58,7 @@ namespace SuperWarmart.Service
                                     HomeAddress = e.HomeAddress,
                                     HomeCity = e.HomeCity,
                                     HomeStateId = e.HomeStateId,
-                                    HomeZipcodeId = e.HomeZipcodeId,
+                                    HomeZipCodeId = e.HomeZipCodeId,
                                     PhoneNumber = e.PhoneNumber
                                 }
                         );
@@ -84,7 +84,7 @@ namespace SuperWarmart.Service
                         HomeAddress = model.HomeAddress,
                         HomeCity = model.HomeCity,
                         HomeStateId = model.HomeStateId,
-                        HomeZipcodeId = model.HomeZipcodeId,
+                        HomeZipCodeId = model.HomeZipCodeId,
                         PhoneNumber = model.PhoneNumber
                     };
             }
@@ -107,7 +107,7 @@ namespace SuperWarmart.Service
                         HomeAddress = model.HomeAddress,
                         HomeCity = model.HomeCity,
                         HomeStateId = model.HomeStateId,
-                        HomeZipcodeId = model.HomeZipcodeId,
+                        HomeZipCodeId = model.HomeZipCodeId,
                         PhoneNumber = model.PhoneNumber
                     };
             }
@@ -129,7 +129,7 @@ namespace SuperWarmart.Service
                 entity.HomeAddress = model.HomeAddress;
                 entity.HomeCity = model.HomeCity;
                 entity.HomeStateId = model.HomeStateId;
-                entity.HomeZipcodeId = model.HomeZipcodeId;
+                entity.HomeZipCodeId = model.HomeZipCodeId;
                 entity.PhoneNumber = model.PhoneNumber;
 
                 return ctx.SaveChanges() == 1;
