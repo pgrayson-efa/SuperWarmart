@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace SuperWarmart.Data
 {
-    public class Zipcode
+    public class InventoryItemCategory
     {
         [Key]
-        public int ZipcodeId { get; set; }
+        public int CategoryId { get; set; }
         [Required]
-        public string VerifiedZipcode { get; set; }
+        public string CategoryName { get; set; }
     }
 }

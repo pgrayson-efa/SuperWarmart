@@ -15,8 +15,8 @@ namespace SuperWarmart.WebAPI.Controllers
     {
         public IHttpActionResult Get()
         {
-            InventoryItemService inventoryItemService = CreateInventoryItemService();
-            var inventoryItems = inventoryItemService.GetInventoryItem();
+            InventoryItemService InventoryItemService = CreateInventoryItemService();
+            var inventoryItems = InventoryItemService.GetInventoryItem();
             return Ok(inventoryItems);
         }
         public IHttpActionResult Post(InventoryItemCreate inventoryItem)
@@ -36,6 +36,16 @@ namespace SuperWarmart.WebAPI.Controllers
             var userId = Guid.Parse(User.Identity.GetUserId());
             var stateService = new InventoryItemService(userId);
             return stateService;
+        }
+        public IHttpActionResult Delete(int id)
+        {
+            InventoryItemService inventoryItemService = CreateInventoryItemService();
+            var inventoryItems = inventoryItemService.DeleteInventoryItemById(id);
+            if (inventoryItems == true)
+            {
+                return Ok(inventoryItems);
+            }
+            return InternalServerError();
         }
     }
 }

@@ -66,6 +66,7 @@ namespace SuperWarmart.Service
                 return query.ToArray();
             }
         }
+
         // get customer by Id
        public CustomerDetail GetCustomerById(int id)
         {

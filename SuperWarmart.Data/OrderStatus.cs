@@ -7,13 +7,11 @@ using System.Threading.Tasks;
 
 namespace SuperWarmart.Data
 {
-    public class State
+    public class OrderStatus
     {
         [Key]
-        public int StateId { get; set; }
+        public int StatusId { get; set; }
         [Required]
-        public string StateName { get; set; }
-        [Required]
-        public string Abbr { get; set; }
+        public string Status { get; set; }
     }
 }

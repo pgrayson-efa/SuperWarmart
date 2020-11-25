@@ -8,58 +8,55 @@ using System.Threading.Tasks;
 
 namespace SuperWarmart.Service
 {
-    public class StateService
+    public class OrderStatusService
     {
         private readonly Guid _userId;
 
-        public StateService(Guid userId)
+        public OrderStatusService(Guid userId)
         {
             _userId = userId;
         }
-        public bool CreateState(StateCreate model)
+        public bool CreateOrderStatus(OrderStatusCreate model)
         {
-            var entity = new State()
+            var entity = new OrderStatus()
             {
-                StateId = model.StateId,
-                StateName = model.StateName,
-                Abbr = model.Abbr
+                StatusId = model.StatusId,
+                Status = model.Status
             };
 
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.States.Add(entity);
+                ctx.OrderStatuses.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
         }
-        public IEnumerable<StateListItem> GetState()
+        public IEnumerable<OrderStatusListItem> GetOrderStatus()
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var query = ctx.States
+                var query = ctx.OrderStatuses
                     .Select(
                     e =>
-                    new StateListItem
+                    new OrderStatusListItem
                     {
-                        StateId = e.StateId,
-                        StateName = e.StateName,
-                        Abbr = e.Abbr
+                        StatusId = e.StatusId,
+                        Status = e.Status
                     }
                     );
-
                 return query.ToArray();
             }
         }
-        public bool DeleteStateById(int id)
+        public bool DeleteOrderStatusById(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = (from o in ctx.States where o.StateId == id select o).SingleOrDefault();
+                var entity = (from o in ctx.OrderStatuses where o.StatusId == id select o).SingleOrDefault();
 
                 if (entity == null)
                 {
                     return false;
                 }
-                ctx.States.Remove(entity);
+                ctx.OrderStatuses.Remove(entity);
 
                 if (ctx.SaveChanges() == 1)
                 {
@@ -70,4 +67,3 @@ namespace SuperWarmart.Service
         }
     }
 }
-

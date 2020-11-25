@@ -8,11 +8,11 @@ namespace SuperWarmart.Model
 {
     public class OrderCreate
     {
-        public int OrderId { get; set; }
         public Guid OwnerId { get; set; }
+        public int OrderId { get; set; }
         public int CustomerId { get; set; }
-        public string OrderStatus { get; set; }
-        public string OrderNote { get; set; }
+        public int OrderStatusId { get; set; }
+        public string Notes { get; set; }
         public double SubTotal { get; set; }
         public double Tax { get; set; }
         public double TotalCost { get; set; }
