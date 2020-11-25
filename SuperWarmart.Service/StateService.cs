@@ -49,6 +49,25 @@ namespace SuperWarmart.Service
                 return query.ToArray();
             }
         }
+        public bool DeleteStateById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = (from o in ctx.States where o.StateId == id select o).SingleOrDefault();
+
+                if (entity == null)
+                {
+                    return false;
+                }
+                ctx.States.Remove(entity);
+
+                if (ctx.SaveChanges() == 1)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
     }
 }
 

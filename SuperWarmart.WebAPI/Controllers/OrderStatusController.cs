@@ -36,5 +36,15 @@ namespace SuperWarmart.WebAPI.Controllers
             var orderStatusService = new OrderStatusService(userId);
             return orderStatusService;
         }
+        public IHttpActionResult Delete(int id)
+        {
+            OrderStatusService orderStatusService = CreateOrderStatusService();
+            var orderStatuses = orderStatusService.DeleteOrderStatusById(id);
+            if (orderStatuses == true)
+            {
+                return Ok(orderStatuses);
+            }
+            return InternalServerError();
+        }
     }
 }

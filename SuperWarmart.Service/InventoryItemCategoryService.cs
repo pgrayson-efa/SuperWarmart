@@ -35,14 +35,33 @@ namespace SuperWarmart.Service
             using (var ctx = new ApplicationDbContext())
             {
                 var query = ctx.InventoryItemCategories
-                .Select( e =>
-                new InventoryItemCategoryListItem
-                {
-                    CategoryId = e.CategoryId,
-                    CategoryName = e.CategoryName
-                }
+                .Select(e =>
+               new InventoryItemCategoryListItem
+               {
+                   CategoryId = e.CategoryId,
+                   CategoryName = e.CategoryName
+               }
                 );
                 return query.ToArray();
+            }
+        }
+        public bool DeleteInventoryItemCategoryById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = (from o in ctx.InventoryItemCategories where o.CategoryId == id select o).SingleOrDefault();
+
+                if (entity == null)
+                {
+                    return false;
+                }
+                ctx.InventoryItemCategories.Remove(entity);
+
+                if (ctx.SaveChanges() == 1)
+                {
+                    return true;
+                }
+                return false;
             }
         }
     }

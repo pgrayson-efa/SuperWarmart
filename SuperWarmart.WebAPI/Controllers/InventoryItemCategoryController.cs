@@ -37,5 +37,15 @@ namespace SuperWarmart.WebAPI.Controllers
             var stateService = new InventoryItemCategoryService(userId);
             return stateService;
         }
+        public IHttpActionResult Delete(int id)
+        {
+            InventoryItemCategoryService inventoryItemCategoryService = CreateInventoryItemCategoryService();
+            var inventoryItemCategories = inventoryItemCategoryService.DeleteInventoryItemCategoryById(id);
+            if (inventoryItemCategories == true)
+            {
+                return Ok(inventoryItemCategories);
+            }
+            return InternalServerError();
+        }
     }
 }

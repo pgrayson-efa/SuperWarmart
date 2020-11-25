@@ -46,5 +46,24 @@ namespace SuperWarmart.Service
                 return query.ToArray();
             }
         }
+        public bool DeleteOrderStatusById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = (from o in ctx.OrderStatuses where o.StatusId == id select o).SingleOrDefault();
+
+                if (entity == null)
+                {
+                    return false;
+                }
+                ctx.OrderStatuses.Remove(entity);
+
+                if (ctx.SaveChanges() == 1)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
     }
 }

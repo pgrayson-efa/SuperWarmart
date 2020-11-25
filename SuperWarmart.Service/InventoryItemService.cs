@@ -59,5 +59,24 @@ namespace SuperWarmart.Service
                 return query.ToArray();
             }
         }
+        public bool DeleteInventoryItemById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = (from o in ctx.InventoryItems where o.InventoryItemId == id select o).SingleOrDefault();
+
+                if (entity == null)
+                {
+                    return false;
+                }
+                ctx.InventoryItems.Remove(entity);
+
+                if (ctx.SaveChanges() == 1)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
     }
 }

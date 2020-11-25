@@ -37,5 +37,15 @@ namespace SuperWarmart.WebAPI.Controllers
             var stateService = new StateService(userId);
             return stateService;
         }
+        public IHttpActionResult Delete(int id)
+        {
+            StateService stateService = CreateStateService();
+            var states = stateService.DeleteStateById(id);
+            if (states == true)
+            {
+                return Ok(states);
+            }
+            return InternalServerError();
+        }
     }
 }
