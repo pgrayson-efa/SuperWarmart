@@ -18,27 +18,31 @@ namespace SuperWarmart.Service
             _userId = userId;
         }
 
-        public bool CreateOrder(OrderCreate model)
+        public int CreateOrder(OrderCreate model)
         {
             var entity = new Order()
             {
                 OwnerId = _userId,
                 OrderId = model.OrderId,
                 CustomerId = model.CustomerId,
-                OrderStatusId = model.OrderStatusId,
+                StatusId = model.StatusId,
                 Notes = model.Notes,
                 SubTotal = model.SubTotal,
                 Tax = model.Tax,
                 TotalCost = model.TotalCost,
                 DateOfOrder = model.DateOfOrder,
                 DateShipped = model.DateShipped
-
             };
 
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Orders.Add(entity);
-                return ctx.SaveChanges() == 1;
+
+                if (ctx.SaveChanges() == 1)
+                {
+                    return 1;
+                }
+                return 0;
             }
         }
 
@@ -55,7 +59,7 @@ namespace SuperWarmart.Service
                                     OwnerId = _userId,
                                     OrderId = e.OrderId,
                                     CustomerId = e.CustomerId,
-                                    OrderStatusId = e.OrderStatusId,
+                                    StatusId = e.StatusId,
                                     Notes = e.Notes,
                                     SubTotal = e.SubTotal,
                                     Tax = e.Tax,
@@ -98,6 +102,24 @@ namespace SuperWarmart.Service
 
                 return false;
 
+            }
+        }
+        public bool UpdateOrder(OrderUpdate model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Orders.Single(o => o.OrderId == model.OrderId);
+
+                entity.CustomerId = model.CustomerId;
+                entity.StatusId = model.StatusId;
+                entity.Notes = model.Notes;
+                entity.SubTotal = model.SubTotal;
+                entity.Tax = model.Tax;
+                entity.TotalCost = model.TotalCost;
+                entity.DateOfOrder = model.DateOfOrder;
+                entity.DateShipped = model.DateShipped;
+
+                return ctx.SaveChanges() == 1;
             }
         }
     }

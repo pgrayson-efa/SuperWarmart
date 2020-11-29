@@ -93,6 +93,7 @@
     <Compile Include="CustomerUpdate.cs" />
     <Compile Include="InventoryItemCategoryCreate.cs" />
     <Compile Include="InventoryItemCategoryListItem.cs" />
+    <Compile Include="OrderUpdate.cs" />
     <Compile Include="OrderStatusCreate.cs" />
     <Compile Include="OrderStatusListItem.cs" />
     <Compile Include="OrderDelete.cs" />

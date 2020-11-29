@@ -38,7 +38,7 @@ namespace SuperWarmart.WebAPI.Controllers
 
             var service = CreateOrderService();
 
-            if (!service.CreateOrder(order))
+            if (service.CreateOrder(order) != 1)
                 return InternalServerError();
 
             return Ok();

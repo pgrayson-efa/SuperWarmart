@@ -11,7 +11,7 @@ namespace SuperWarmart.Model
         public int OrderId { get; set; }
         public Guid OwnerId { get; set; }
         public int CustomerId { get; set; }
-        public int OrderStatusId { get; set; }
+        public int StatusId { get; set; }
         public string Notes { get; set; }
         public double SubTotal { get; set; }
         public double Tax { get; set; }

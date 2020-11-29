@@ -14,10 +14,10 @@ namespace SuperWarmart.Model
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string CompanyName { get; set; }
-        public string HomeAddress { get; set; }
-        public string HomeCity { get; set; }
-        public int HomeStateId { get; set; }
-        public int HomeZipCodeId { get; set; }
+        public string Address { get; set; }
+        public string City { get; set; }
+        public int StateId { get; set; }
+        public int ZipCodeId { get; set; }
         public string PhoneNumber { get; set; }
 
 

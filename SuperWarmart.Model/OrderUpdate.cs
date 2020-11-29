@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SuperWarmart.Model
 {
-    public class OrderCreate
+    public class OrderUpdate
     {
         public Guid OwnerId { get; set; }
         public int OrderId { get; set; }

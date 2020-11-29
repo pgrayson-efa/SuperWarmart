@@ -347,15 +347,15 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SuperWarmart.Data\SuperWarmart.Data.csproj">
-      <Project>{311C0BE4-467E-4B17-899D-B05FE2A4DB65}</Project>
+      <Project>{52f6d6ee-60d7-4ec2-9ef8-18f17c5fcc7c}</Project>
       <Name>SuperWarmart.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\SuperWarmart.Model\SuperWarmart.Model.csproj">
-      <Project>{DD0642D0-5182-4F66-A864-7DFB4A4AE150}</Project>
+      <Project>{dd0642d0-5182-4f66-a864-7dfb4a4ae150}</Project>
       <Name>SuperWarmart.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\SuperWarmart.Service\SuperWarmart.Service.csproj">
-      <Project>{3A6431BE-13D1-4D67-B270-8A2ABAB5BBDA}</Project>
+      <Project>{3a6431be-13d1-4d67-b270-8a2abab5bbda}</Project>
       <Name>SuperWarmart.Service</Name>
     </ProjectReference>
   </ItemGroup>
