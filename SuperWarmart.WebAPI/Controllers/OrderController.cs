@@ -20,6 +20,13 @@ namespace SuperWarmart.WebAPI.Controllers
             return Ok(orders);
         }
 
+        public IHttpActionResult Get(int id)
+        {
+            OrderService orderService = CreateOrderService();
+            var orders = orderService.GetOrderByOrderId(id);
+            return Ok(orders);
+        }
+
         public IHttpActionResult Delete(int id)
         {
             OrderService orderService = CreateOrderService();

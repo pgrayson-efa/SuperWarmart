@@ -73,6 +73,29 @@ namespace SuperWarmart.Service
             }
         }
 
+        public OrderDetail GetOrderByOrderId(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var model = ctx.Orders.Single(c => c.OrderId == id);
+
+                return
+                    new OrderDetail
+                    {
+                        OwnerId = _userId,
+                        OrderId = model.OrderId,
+                        CustomerId = model.CustomerId,
+                        StatusId = model.StatusId,
+                        Notes = model.Notes,
+                        SubTotal = model.SubTotal,
+                        Tax = model.Tax,
+                        TotalCost = model.TotalCost,
+                        DateOfOrder = model.DateOfOrder,
+                        DateShipped = model.DateShipped
+                    };
+            }
+        }
+
 
         public bool DeleteOrderByOrderId(int id)
         { 
@@ -83,9 +106,6 @@ namespace SuperWarmart.Service
                 //
                 // var entity = ctx.Orders.Single(s => s.OrderId == id);
 
-                //
-                // Thing that works and returns null if the query doesn't return anything
-                //
                 var entity = (from o in ctx.Orders where o.OrderId == id select o).SingleOrDefault();
 
                 if (entity == null)
