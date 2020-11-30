@@ -31,6 +31,16 @@ namespace SuperWarmart.WebAPI.Controllers
 
             return Ok();
         }
+        public IHttpActionResult Delete(int id)
+        {
+            ZipCodeService zipCodeService = CreateZipCodeService();
+            var zipCodes = zipCodeService.DeleteZipCodeByZipCodeId(id);
+            if (zipCodes == true)
+            {
+                return Ok(zipCodes);
+            }
+            return InternalServerError();
+        }
         private ZipCodeService CreateZipCodeService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());

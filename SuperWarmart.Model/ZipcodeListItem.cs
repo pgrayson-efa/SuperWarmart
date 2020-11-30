@@ -9,6 +9,7 @@ namespace SuperWarmart.Model
     public class ZipCodeListItem
     {
         public int ZipCodeId { get; set; }
+        public int StateId { get; set; }
         public string VerifiedZipCode { get; set; }
     }
 }

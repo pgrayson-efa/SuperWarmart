@@ -20,6 +20,13 @@ namespace SuperWarmart.WebAPI.Controllers
             return Ok(orders);
         }
 
+        public IHttpActionResult Get(int id)
+        {
+            OrderService orderService = CreateOrderService();
+            var orders = orderService.GetOrderByOrderId(id);
+            return Ok(orders);
+        }
+
         public IHttpActionResult Delete(int id)
         {
             OrderService orderService = CreateOrderService();
@@ -31,6 +38,20 @@ namespace SuperWarmart.WebAPI.Controllers
             return InternalServerError();
         }
 
+        public IHttpActionResult Put(OrderUpdate order)
+        {
+            if (ModelState.IsValid != true)
+            {
+                return BadRequest(ModelState);
+            }
+            var service = CreateOrderService();
+            if (service.UpdateOrder(order) != true)
+            {
+                return InternalServerError();
+            }
+            return Ok();
+        }
+
         public IHttpActionResult Post(OrderCreate order)
         {
             if (!ModelState.IsValid)
@@ -38,7 +59,7 @@ namespace SuperWarmart.WebAPI.Controllers
 
             var service = CreateOrderService();
 
-            if (!service.CreateOrder(order))
+            if (service.CreateOrder(order) != 1)
                 return InternalServerError();
 
             return Ok();

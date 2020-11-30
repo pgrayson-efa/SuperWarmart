@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace SuperWarmart.Model
 {
-    public class OrderCreate
+    public class OrderDetail
     {
-        public Guid OwnerId { get; set; }
         public int OrderId { get; set; }
+        public Guid OwnerId { get; set; }
         public int CustomerId { get; set; }
         public int StatusId { get; set; }
         public string Notes { get; set; }

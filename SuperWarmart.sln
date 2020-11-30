@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperWarmart.Model", "Super
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperWarmart.Service", "SuperWarmart.Service\SuperWarmart.Service.csproj", "{3A6431BE-13D1-4D67-B270-8A2ABAB5BBDA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperWarmart.Console", "SuperWarmart.Console\SuperWarmart.Console.csproj", "{B28B8F97-3BD7-4125-8D2E-66919C28EEA8}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperWarmart.Data", "SuperWarmart.Data\SuperWarmart.Data.csproj", "{52F6D6EE-60D7-4EC2-9EF8-18F17C5FCC7C}"
 EndProject
 Global
@@ -31,10 +29,6 @@ Global
 		{3A6431BE-13D1-4D67-B270-8A2ABAB5BBDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A6431BE-13D1-4D67-B270-8A2ABAB5BBDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A6431BE-13D1-4D67-B270-8A2ABAB5BBDA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B28B8F97-3BD7-4125-8D2E-66919C28EEA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B28B8F97-3BD7-4125-8D2E-66919C28EEA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B28B8F97-3BD7-4125-8D2E-66919C28EEA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B28B8F97-3BD7-4125-8D2E-66919C28EEA8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{52F6D6EE-60D7-4EC2-9EF8-18F17C5FCC7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{52F6D6EE-60D7-4EC2-9EF8-18F17C5FCC7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52F6D6EE-60D7-4EC2-9EF8-18F17C5FCC7C}.Release|Any CPU.ActiveCfg = Release|Any CPU

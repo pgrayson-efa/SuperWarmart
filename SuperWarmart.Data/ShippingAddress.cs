@@ -19,17 +19,21 @@ namespace SuperWarmart.Data
         public virtual Customer Customer { get; set; }
 
         [Required]
-        [MinLength(1, ErrorMessage = "Need to enter something.")]
-        [MaxLength(50, ErrorMessage = "Max length is 50 characters.")]
+        [MinLength(1, ErrorMessage = "Please Enter A Value.")]
+        [MaxLength(50, ErrorMessage = "Value Must Be 50 Characters Or Less.")]
         public string LocationName { get; set; }
         [Required]
         public string StreetAddress { get; set; }
         [Required]
         public string City { get; set; }
+
         [Required]
         public int StateId { get; set; }
+        public State State { get; set; }
+
         [Required]
         public int ZipCodeId { get; set; }
+        public ZipCode ZipCode { get; set; }
 
     }
 }

@@ -30,6 +30,18 @@ namespace SuperWarmart.WebAPI.Controllers
 
             return Ok();
         }
+
+        public IHttpActionResult Delete(int id)
+        {
+            OrderLineItemService orderLineItemService = CreateOrderLineItemService();
+            var orderLineItems = orderLineItemService.DeleteOrderLineItemByOrderLineItemId(id);
+            if (orderLineItems == true)
+            {
+                return Ok(orderLineItems);
+            }
+            return InternalServerError();
+        }
+
         private OrderLineItemService CreateOrderLineItemService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());

@@ -15,11 +15,12 @@ namespace SuperWarmart.Data
 
         [Required]
         public Guid OwnerId { get; set; }
+
         [Required]
         public int CustomerId { get; set; }
+
         [Required]
-        public int OrderStatusId { get; set; }
-        [Required]
+        public int StatusId { get; set; }
         public string Notes { get; set; }
         public double SubTotal { get; set; }
         public double Tax { get; set; }
@@ -27,5 +28,6 @@ namespace SuperWarmart.Data
         [Required]
         public DateTime DateOfOrder { get; set; }
         public DateTime DateShipped { get; set; }
+
     }
 }

@@ -13,12 +13,13 @@ namespace SuperWarmart.Data
         [Key]
         public int OrderLineItemId { get; set; }
 
+        [Required]
+        [ForeignKey("Order")]
         public int OrderId { get; set; }
+        public Order Order { get; set; }
 
-        //[ForeignKey("InventoryItem")]
+        [Required]
         public int InventoryItemId { get; set; }
-        //public virtual InventoryItem InventoryItem { get; set; }
-
         public int QuantityOrdered { get; set; }
 
     }

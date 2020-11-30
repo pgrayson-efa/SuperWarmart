@@ -59,14 +59,7 @@ namespace SuperWarmart.Service
         {
             using (var ctx = new ApplicationDbContext())
             {
-                //
-                // This doesn't return anything you can check if you don't find the OrderLineItemId
-                //
-                // var entity = ctx.Orders.Single(s => s.OrderId == id);
 
-                //
-                // Thing that works and returns null if the query doesn't return anything
-                //
                 var entity = (from o in ctx.OrderLineItems where o.OrderLineItemId == id select o).SingleOrDefault();
 
                 if (entity == null)
