@@ -29,11 +29,9 @@ namespace SuperWarmart.Data
 
         [Required]
         public int StateId { get; set; }
-        public State State { get; set; }
 
         [Required]
         public int ZipCodeId { get; set; }
-        public ZipCode ZipCode { get; set; }
 
     }
 }

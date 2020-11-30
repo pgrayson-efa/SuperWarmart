@@ -20,13 +20,13 @@ namespace SuperWarmart.Data
         public string LastName { get; set; }
         public string CompanyName { get; set; }
         [Required]
-        public string Address { get; set; }
+        public string HomeAddress { get; set; }
         [Required]
-        public string City { get; set; }
+        public string HomeCity { get; set; }
         [Required]
-        public int StateId { get; set; }
+        public int HomeStateId { get; set; }
         [Required]
-        public int ZipCodeId { get; set; }
+        public int HomeZipCodeId { get; set; }
         [Required]
         public string PhoneNumber { get; set; }
         public virtual List<ShippingAddress> ShippingAddresses { get; set; } = new List<ShippingAddress>();
