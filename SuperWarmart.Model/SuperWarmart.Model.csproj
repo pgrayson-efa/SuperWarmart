@@ -122,7 +122,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SuperWarmart.Data\SuperWarmart.Data.csproj">
-      <Project>{311C0BE4-467E-4B17-899D-B05FE2A4DB65}</Project>
+      <Project>{52F6D6EE-60D7-4EC2-9EF8-18F17C5FCC7C}</Project>
       <Name>SuperWarmart.Data</Name>
     </ProjectReference>
   </ItemGroup>

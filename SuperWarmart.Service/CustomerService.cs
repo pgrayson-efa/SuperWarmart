@@ -82,14 +82,16 @@ namespace SuperWarmart.Service
                         FirstName = model.FirstName,
                         LastName = model.LastName,
                         CompanyName = model.CompanyName,
-                        Address = model.Address,
-                        City = model.City,
-                        StateId = model.StateId,
-                        ZipCodeId = model.ZipCodeId,
-                        PhoneNumber = model.PhoneNumber
+                        HomeAddress = model.HomeAddress,
+                        HomeCity = model.HomeCity,
+                        HomeStateId = model.HomeStateId,
+                        HomeZipCodeId = model.HomeZipCodeId,
+                        PhoneNumber = model.PhoneNumber,
+                        Addresses = model.ShippingAddresses
                     };
             }
         }
+        
         //Get Customer by Name
         public CustomerDetail GetCustomerByName(string lastName, string firstName)
         {
@@ -105,11 +107,12 @@ namespace SuperWarmart.Service
                         FirstName = model.FirstName,
                         LastName = model.LastName,
                         CompanyName = model.CompanyName,
-                        Address = model.Address,
-                        City = model.City,
-                        StateId = model.StateId,
-                        ZipCodeId = model.ZipCodeId,
-                        PhoneNumber = model.PhoneNumber
+                        HomeAddress = model.HomeAddress,
+                        HomeCity = model.HomeCity,
+                        HomeStateId = model.HomeStateId,
+                        HomeZipCodeId = model.HomeZipCodeId,
+                        PhoneNumber = model.PhoneNumber,
+                        Addresses = model.ShippingAddresses
                     };
             }
         }
