@@ -91,6 +91,10 @@
     <Compile Include="IdentityModels.cs" />
     <Compile Include="InventoryItem.cs" />
     <Compile Include="InventoryItemCategory.cs" />
+    <Compile Include="Migrations\202011301528560_Init.cs" />
+    <Compile Include="Migrations\202011301528560_Init.designer.cs">
+      <DependentUpon>202011301528560_Init.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="OrderLineItem.cs" />
@@ -106,6 +110,11 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202011301528560_Init.resx">
+      <DependentUpon>202011301528560_Init.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

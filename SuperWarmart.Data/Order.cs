@@ -17,14 +17,10 @@ namespace SuperWarmart.Data
         public Guid OwnerId { get; set; }
 
         [Required]
-
         public int CustomerId { get; set; }
-        public Customer Customer { get; set; }
 
         [Required]
         public int StatusId { get; set; }
-        public OrderStatus OrderStatus { get; set; }
-
         public string Notes { get; set; }
         public double SubTotal { get; set; }
         public double Tax { get; set; }
