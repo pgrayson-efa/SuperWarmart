@@ -48,5 +48,25 @@ namespace SuperWarmart.Service
                 return query.ToArray();
             }
         }
+
+        public bool DeleteZipCodeByZipCodeId(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = (from o in ctx.ZipCodes where o.ZipCodeId == id select o).SingleOrDefault();
+
+                if (entity == null)
+                {
+                    return false;
+                }
+                ctx.ZipCodes.Remove(entity);
+
+                if (ctx.SaveChanges() == 1)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
     }
 }

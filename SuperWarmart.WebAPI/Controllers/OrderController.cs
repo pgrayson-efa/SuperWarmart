@@ -38,6 +38,20 @@ namespace SuperWarmart.WebAPI.Controllers
             return InternalServerError();
         }
 
+        public IHttpActionResult Put(OrderUpdate order)
+        {
+            if (ModelState.IsValid != true)
+            {
+                return BadRequest(ModelState);
+            }
+            var service = CreateOrderService();
+            if (service.UpdateOrder(order) != true)
+            {
+                return InternalServerError();
+            }
+            return Ok();
+        }
+
         public IHttpActionResult Post(OrderCreate order)
         {
             if (!ModelState.IsValid)

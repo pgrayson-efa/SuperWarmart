@@ -101,10 +101,6 @@ namespace SuperWarmart.Service
         { 
             using (var ctx = new ApplicationDbContext())
             {
-                //
-                // This doesn't return anything you can check if it doesn't find the id to delete
-                //
-                // var entity = ctx.Orders.Single(s => s.OrderId == id);
 
                 var entity = (from o in ctx.Orders where o.OrderId == id select o).SingleOrDefault();
 
