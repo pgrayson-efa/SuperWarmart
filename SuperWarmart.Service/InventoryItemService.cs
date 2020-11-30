@@ -1,5 +1,4 @@
-﻿
-using SuperWarmart.Data;
+﻿using SuperWarmart.Data;
 using SuperWarmart.Model;
 using System;
 using System.Collections.Generic;

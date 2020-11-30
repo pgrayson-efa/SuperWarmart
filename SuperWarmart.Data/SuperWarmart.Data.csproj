@@ -91,10 +91,6 @@
     <Compile Include="IdentityModels.cs" />
     <Compile Include="InventoryItem.cs" />
     <Compile Include="InventoryItemCategory.cs" />
-    <Compile Include="Migrations\202011251902341_init.cs" />
-    <Compile Include="Migrations\202011251902341_init.designer.cs">
-      <DependentUpon>202011251902341_init.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="OrderLineItem.cs" />
@@ -107,11 +103,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202011251902341_init.resx">
-      <DependentUpon>202011251902341_init.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
