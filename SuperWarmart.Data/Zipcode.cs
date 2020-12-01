@@ -17,6 +17,9 @@ namespace SuperWarmart.Data
         public int StateId { get; set; }
 
         [Required]
+        public string City { get; set; }
+
+        [Required]
         public string VerifiedZipCode { get; set; }
     }
 }

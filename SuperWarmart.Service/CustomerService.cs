@@ -2,6 +2,7 @@
 using SuperWarmart.Model;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,10 +27,9 @@ namespace SuperWarmart.Service
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 CompanyName = model.CompanyName,
-                HomeAddress = model.HomeAddress,
-                HomeCity = model.HomeCity,
-                HomeStateId = model.HomeStateId,
-                HomeZipCodeId = model.HomeZipCodeId,
+                StreetAddress = model.StreetAddress,
+                StateId = model.StateId,
+                ZipCodeId = model.ZipCodeId,
                 PhoneNumber = model.PhoneNumber
             };
 
@@ -45,21 +45,20 @@ namespace SuperWarmart.Service
             using (var ctx = new ApplicationDbContext())
             {
                 var query = ctx.Customers
-                        .Where(e => e.OwnerId == _userId)
                         .Select(
                             e =>
                                 new CustomerListItem
                                 {
-                                    OwnerId = _userId,
+                                    OwnerId = e.OwnerId,
                                     CustomerId = e.CustomerId,
                                     FirstName = e.FirstName,
                                     LastName = e.LastName,
                                     CompanyName = e.CompanyName,
-                                    HomeAddress = e.HomeAddress,
-                                    HomeCity = e.HomeCity,
-                                    HomeStateId = e.HomeStateId,
-                                    HomeZipCodeId = e.HomeZipCodeId,
-                                    PhoneNumber = e.PhoneNumber
+                                    StreetAddress = e.StreetAddress,
+                                    State = e.State,
+                                    ZipCode = e.ZipCode,
+                                    PhoneNumber = e.PhoneNumber,
+                                    ShippingAddress = e.ShippingAddress
                                 }
                         );
 
@@ -82,12 +81,11 @@ namespace SuperWarmart.Service
                         FirstName = model.FirstName,
                         LastName = model.LastName,
                         CompanyName = model.CompanyName,
-                        HomeAddress = model.HomeAddress,
-                        HomeCity = model.HomeCity,
-                        HomeStateId = model.HomeStateId,
-                        HomeZipCodeId = model.HomeZipCodeId,
+                        StreetAddress = model.StreetAddress,
+                        State = model.State,
+                        ZipCode = model.ZipCode,
                         PhoneNumber = model.PhoneNumber,
-                        Addresses = model.ShippingAddresses
+                        ShippingAddress = model.ShippingAddress
                     };
             }
         }
@@ -107,12 +105,12 @@ namespace SuperWarmart.Service
                         FirstName = model.FirstName,
                         LastName = model.LastName,
                         CompanyName = model.CompanyName,
-                        HomeAddress = model.HomeAddress,
-                        HomeCity = model.HomeCity,
-                        HomeStateId = model.HomeStateId,
-                        HomeZipCodeId = model.HomeZipCodeId,
+                        StreetAddress = model.StreetAddress,
+                        State = model.State,
+                        ZipCode = model.ZipCode,
                         PhoneNumber = model.PhoneNumber,
-                        Addresses = model.ShippingAddresses
+                        ShippingAddress = model.ShippingAddress
+
                     };
             }
         }
@@ -130,10 +128,9 @@ namespace SuperWarmart.Service
                 entity.FirstName = model.FirstName;
                 entity.LastName = model.LastName;
                 entity.CompanyName = model.CompanyName;
-                entity.HomeAddress = model.HomeAddress;
-                entity.HomeCity = model.HomeCity;
-                entity.HomeStateId = model.HomeStateId;
-                entity.HomeZipCodeId = model.HomeZipCodeId;
+                entity.StreetAddress = model.StreetAddress;
+                entity.StateId = model.StateId;
+                entity.ZipCodeId = model.ZipCodeId;
                 entity.PhoneNumber = model.PhoneNumber;
 
                 return ctx.SaveChanges() == 1;

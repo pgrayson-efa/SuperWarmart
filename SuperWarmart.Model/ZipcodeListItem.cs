@@ -11,5 +11,6 @@ namespace SuperWarmart.Model
         public int ZipCodeId { get; set; }
         public int StateId { get; set; }
         public string VerifiedZipCode { get; set; }
+        public string City { get; set; }
     }
 }

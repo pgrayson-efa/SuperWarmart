@@ -59,13 +59,14 @@ namespace SuperWarmart.Service
                                     OwnerId = _userId,
                                     OrderId = e.OrderId,
                                     CustomerId = e.CustomerId,
-                                    StatusId = e.StatusId,
+                                    OrderStatus = e.OrderStatus,
                                     Notes = e.Notes,
                                     SubTotal = e.SubTotal,
                                     Tax = e.Tax,
                                     TotalCost = e.TotalCost,
                                     DateOfOrder = e.DateOfOrder,
-                                    DateShipped = e.DateShipped
+                                    DateShipped = e.DateShipped,
+                                    OrderLineItems = e.OrderLineItems
                                 }
                         );
 
@@ -85,13 +86,14 @@ namespace SuperWarmart.Service
                         OwnerId = _userId,
                         OrderId = model.OrderId,
                         CustomerId = model.CustomerId,
-                        StatusId = model.StatusId,
+                        OrderStatus = model.OrderStatus,
                         Notes = model.Notes,
                         SubTotal = model.SubTotal,
                         Tax = model.Tax,
                         TotalCost = model.TotalCost,
                         DateOfOrder = model.DateOfOrder,
-                        DateShipped = model.DateShipped
+                        DateShipped = model.DateShipped,
+                        OrderLineItems = model.OrderLineItems
                     };
             }
         }

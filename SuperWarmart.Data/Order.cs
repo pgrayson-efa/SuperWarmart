@@ -12,6 +12,7 @@ namespace SuperWarmart.Data
     {
         [Key]
         public int OrderId { get; set; }
+        public virtual List<OrderLineItem> OrderLineItems { get; set; } = new List<OrderLineItem>();
 
         [Required]
         public Guid OwnerId { get; set; }
@@ -21,6 +22,7 @@ namespace SuperWarmart.Data
 
         [Required]
         public int StatusId { get; set; }
+        public virtual OrderStatus OrderStatus { get; set; }
         public string Notes { get; set; }
         public double SubTotal { get; set; }
         public double Tax { get; set; }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SuperWarmart.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,7 @@ namespace SuperWarmart.Model
         public string UPC { get; set; }
 
         public int CategoryId { get; set; }
+        public InventoryItemCategory InventoryItemCategory { get; set; }
 
         public string StockNumber { get; set; }
 

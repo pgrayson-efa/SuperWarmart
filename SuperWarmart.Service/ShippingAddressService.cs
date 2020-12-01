@@ -26,7 +26,6 @@ namespace SuperWarmart.Service
                 CustomerId = model.CustomerId,
                 LocationName = model.LocationName,
                 StreetAddress = model.StreetAddress,
-                City = model.City,
                 StateId = model.StateId,
                 ZipCodeId = model.ZipCodeId
             };
@@ -53,16 +52,15 @@ namespace SuperWarmart.Service
                                     CustomerId = a.CustomerId,
                                     LocationName = a.LocationName,
                                     StreetAddress = a.StreetAddress,
-                                    City = a.City,
-                                    StateId = a.StateId,
-                                    ZipCodeId = a.ZipCodeId
+                                    State = a.State,
+                                    ZipCode = a.ZipCode
                                 });
                 return query.ToArray();
             }
         }
 
         // Get all addresses by Id
-        public IEnumerable<ShippingAddressListItem> GetShippingAddressesByCustomer(int id)
+        public IEnumerable<ShippingAddressListItem> GetShippingAddressesByCustomerId(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -73,13 +71,12 @@ namespace SuperWarmart.Service
                             a =>
                                 new ShippingAddressListItem
                                 {
+                                    State = a.State,
+                                    ZipCode = a.ZipCode,
                                     ShippingAddressId = a.ShippingAddressId,
                                     CustomerId = a.CustomerId,
                                     LocationName = a.LocationName,
-                                    StreetAddress = a.StreetAddress,
-                                    City = a.City,
-                                    StateId = a.StateId,
-                                    ZipCodeId = a.ZipCodeId
+                                    StreetAddress = a.StreetAddress
                                 });
                 return query.ToArray();
             }
@@ -94,12 +91,11 @@ namespace SuperWarmart.Service
                     .ShippingAddresses
                     .Single(a => a.ShippingAddressId == id);
                 
-                entity.CustomerId = model.CustomerId;
-                entity.LocationName = model.LocationName;
-                entity.StreetAddress = model.StreetAddress;
-                entity.City = model.City;
-                entity.StateId = model.StateId;
-                entity.ZipCodeId = model.ZipCodeId;
+                    entity.CustomerId = model.CustomerId;
+                    entity.LocationName = model.LocationName;
+                    entity.StreetAddress = model.StreetAddress;
+                    entity.StateId = model.StateId;
+                    entity.ZipCodeId = model.ZipCodeId;
 
                 return ctx.SaveChanges() == 1;
             }

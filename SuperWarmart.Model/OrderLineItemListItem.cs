@@ -13,7 +13,6 @@ namespace SuperWarmart.Model
         public int OrderLineItemId { get; set; }
 
         public int OrderId { get; set; }
-
         public int InventoryItemId { get; set; }
 
         public int QuantityOrdered { get; set; }

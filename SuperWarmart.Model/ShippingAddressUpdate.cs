@@ -20,8 +20,6 @@ namespace SuperWarmart.Model
         [Required]
         public string StreetAddress { get; set; }
         [Required]
-        public string City { get; set; }
-        [Required]
         public int StateId { get; set; }
         [Required]
         public int ZipCodeId { get; set; }

@@ -13,10 +13,9 @@ namespace SuperWarmart.Data
         [Key]
         public int ShippingAddressId { get; set; }
 
-
-        [ForeignKey(nameof(Customer))]
+        //[ForeignKey(nameof(Customer))]
         public int CustomerId { get; set; }
-        public virtual Customer Customer { get; set; }
+        //public virtual Customer Customer { get; set; }
 
         [Required]
         [MinLength(1, ErrorMessage = "Please Enter A Value.")]
@@ -24,14 +23,14 @@ namespace SuperWarmart.Data
         public string LocationName { get; set; }
         [Required]
         public string StreetAddress { get; set; }
-        [Required]
-        public string City { get; set; }
 
         [Required]
         public int StateId { get; set; }
+        public virtual State State { get; set; }
 
         [Required]
         public int ZipCodeId { get; set; }
+        public virtual ZipCode ZipCode { get; set; }
 
     }
 }

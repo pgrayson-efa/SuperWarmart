@@ -91,6 +91,18 @@
     <Compile Include="IdentityModels.cs" />
     <Compile Include="InventoryItem.cs" />
     <Compile Include="InventoryItemCategory.cs" />
+    <Compile Include="Migrations\202012011157118_yayyay.cs" />
+    <Compile Include="Migrations\202012011157118_yayyay.designer.cs">
+      <DependentUpon>202012011157118_yayyay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012011224080_yayyayyay.cs" />
+    <Compile Include="Migrations\202012011224080_yayyayyay.designer.cs">
+      <DependentUpon>202012011224080_yayyayyay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012011232000_yaynessness.cs" />
+    <Compile Include="Migrations\202012011232000_yaynessness.designer.cs">
+      <DependentUpon>202012011232000_yaynessness.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="OrderLineItem.cs" />
@@ -106,6 +118,17 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202012011157118_yayyay.resx">
+      <DependentUpon>202012011157118_yayyay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012011224080_yayyayyay.resx">
+      <DependentUpon>202012011224080_yayyayyay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012011232000_yaynessness.resx">
+      <DependentUpon>202012011232000_yaynessness.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

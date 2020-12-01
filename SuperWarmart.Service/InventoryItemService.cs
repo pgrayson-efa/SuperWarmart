@@ -46,7 +46,7 @@ namespace SuperWarmart.Service
                     {
                         InventoryItemId = e.InventoryItemId,
                         UPC = e.UPC,
-                        CategoryId = e.CategoryId,
+                        InventoryItemCategory = e.InventoryItemCategory,
                         StockNumber = e.StockNumber,
                         ItemName = e.ItemName,
                         Description = e.Description,

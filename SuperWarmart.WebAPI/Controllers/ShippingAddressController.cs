@@ -46,7 +46,7 @@ namespace SuperWarmart.WebAPI.Controllers
         public IHttpActionResult Get(int id)
         {
             ShippingAddressService shippingAddressService = CreateShippingAddressService();
-            var shippingAddresses = shippingAddressService.GetShippingAddressesByCustomer(id);
+            var shippingAddresses = shippingAddressService.GetShippingAddressesByCustomerId(id);
             return Ok(shippingAddresses);
         }
         // Update Shipping Address

@@ -21,6 +21,8 @@ namespace SuperWarmart.Service
             var entity = new ZipCode()
             {
                 ZipCodeId = model.ZipCodeId,
+                StateId = model.StateId,
+                City = model.City,
                 VerifiedZipCode = model.VerifiedZipCode
             };
 
@@ -41,7 +43,9 @@ namespace SuperWarmart.Service
                                 new ZipCodeListItem
                                 {
                                     ZipCodeId = e.ZipCodeId,
-                                    VerifiedZipCode = e.VerifiedZipCode
+                                    StateId = e.StateId,
+                                    VerifiedZipCode = e.VerifiedZipCode,
+                                    City = e.City
                                 }
                         );
 
