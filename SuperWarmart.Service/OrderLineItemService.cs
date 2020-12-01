@@ -2,6 +2,7 @@
 using SuperWarmart.Model;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,7 +36,7 @@ namespace SuperWarmart.Service
             }
         }
 
-        public IEnumerable<OrderLineItemListItem> GetOrderLineItem()
+        public async  Task<IEnumerable<OrderLineItemListItem>> GetOrderLineItem()
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -46,12 +47,44 @@ namespace SuperWarmart.Service
                                 {
                                     OrderLineItemId = e.OrderLineItemId,
                                     OrderId = e.OrderId,
-                                    InventoryItemId = e.InventoryItemId,
-                                    QuantityOrdered = e.QuantityOrdered
+                                    QuantityOrdered = e.QuantityOrdered,
+                                    //InventoryItemId = e.InventoryItemId,
+                                    //InventoryItem = e.InventoryItem,
+                                    InventoryItem = new InventoryItemListItem()
+                                    {
+                                        InventoryItemId = e.InventoryItem.InventoryItemId,
+                                        UPC = e.InventoryItem.UPC,
+                                        StockNumber = e.InventoryItem.StockNumber,
+                                        ItemName = e.InventoryItem.ItemName,
+                                        Description = e.InventoryItem.Description,
+                                        Price = e.InventoryItem.Price,
+                                        QuantityInStock = e.InventoryItem.QuantityInStock,
+                                        InventoryItemCategoryId = e.InventoryItem.InventoryItemCategory.InventoryItemCategoryId,
+                                        InventoryItemCategoryName = e.InventoryItem.InventoryItemCategory.CategoryName
+                                    },
+
                                 }
                         );
 
-                return query.ToArray();
+                return await query.ToListAsync();
+            }
+        }
+
+        public async Task<OrderLineItemDetail> GetOrderLineItemById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var model = await ctx.OrderLineItems.SingleAsync(c => c.OrderLineItemId == id);
+
+                return
+                    new OrderLineItemDetail
+                    {
+                        OrderLineItemId = model.OrderLineItemId,
+                        OrderId = model.OrderId,
+                        //InventoryItemId = e.InventoryItemId,
+                        InventoryItem = model.InventoryItem,
+                        QuantityOrdered = model.QuantityOrdered
+                    };
             }
         }
 

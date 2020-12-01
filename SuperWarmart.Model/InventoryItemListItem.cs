@@ -13,8 +13,9 @@ namespace SuperWarmart.Model
 
         public string UPC { get; set; }
 
-        public int CategoryId { get; set; }
-        public InventoryItemCategory InventoryItemCategory { get; set; }
+        public int InventoryItemCategoryId { get; set; }
+        public string InventoryItemCategoryName { get; set; }
+        //public virtual InventoryItemCategory InventoryItemCategory { get; set; }
 
         public string StockNumber { get; set; }
 

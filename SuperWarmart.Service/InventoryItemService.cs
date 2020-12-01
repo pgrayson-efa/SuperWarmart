@@ -22,7 +22,7 @@ namespace SuperWarmart.Service
             {
                 InventoryItemId = model.InventoryItemId,
                 UPC = model.UPC,
-                CategoryId = model.CategoryId,
+                InventoryItemCategoryId = model.InventoryItemCategoryId,
                 StockNumber = model.StockNumber,
                 ItemName = model.ItemName,
                 Description = model.Description,
@@ -46,7 +46,7 @@ namespace SuperWarmart.Service
                     {
                         InventoryItemId = e.InventoryItemId,
                         UPC = e.UPC,
-                        InventoryItemCategory = e.InventoryItemCategory,
+                        InventoryItemCategoryName = e.InventoryItemCategory.CategoryName,
                         StockNumber = e.StockNumber,
                         ItemName = e.ItemName,
                         Description = e.Description,

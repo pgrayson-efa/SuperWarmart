@@ -71,12 +71,13 @@ namespace SuperWarmart.Service
                             a =>
                                 new ShippingAddressListItem
                                 {
-                                    State = a.State,
-                                    ZipCode = a.ZipCode,
+
                                     ShippingAddressId = a.ShippingAddressId,
                                     CustomerId = a.CustomerId,
                                     LocationName = a.LocationName,
-                                    StreetAddress = a.StreetAddress
+                                    StreetAddress = a.StreetAddress,
+                                    State = a.State,
+                                    ZipCode = a.ZipCode
                                 });
                 return query.ToArray();
             }

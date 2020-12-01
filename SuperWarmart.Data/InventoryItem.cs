@@ -14,7 +14,7 @@ namespace SuperWarmart.Data
         public int InventoryItemId { get; set; }
         [Required]
         public string UPC { get; set; }
-        public int CategoryId { get; set; }
+        public int InventoryItemCategoryId { get; set; }
         public virtual InventoryItemCategory InventoryItemCategory { get; set; }
 
         [Required]

@@ -20,7 +20,7 @@ namespace SuperWarmart.Service
         {
             var entity = new InventoryItemCategory()
             {
-                CategoryId = model.CategoryId,
+                InventoryItemCategoryId = model.InventoryItemCategoryId,
                 CategoryName = model.CategoryName
             };
 
@@ -38,7 +38,7 @@ namespace SuperWarmart.Service
                 .Select(e =>
                new InventoryItemCategoryListItem
                {
-                   CategoryId = e.CategoryId,
+                   InventoryItemCategoryId = e.InventoryItemCategoryId,
                    CategoryName = e.CategoryName
                }
                 );
@@ -49,7 +49,7 @@ namespace SuperWarmart.Service
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = (from o in ctx.InventoryItemCategories where o.CategoryId == id select o).SingleOrDefault();
+                var entity = (from o in ctx.InventoryItemCategories where o.InventoryItemCategoryId == id select o).SingleOrDefault();
 
                 if (entity == null)
                 {

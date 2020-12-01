@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace SuperWarmart.WebAPI.Controllers
@@ -13,10 +14,10 @@ namespace SuperWarmart.WebAPI.Controllers
     [Authorize]
     public class OrderController : ApiController
     {
-        public IHttpActionResult Get()
+        public async Task<IHttpActionResult> Get()
         {
             OrderService orderService = CreateOrderService();
-            var orders = orderService.GetOrder();
+            var orders = await orderService.GetOrder();
             return Ok(orders);
         }
 

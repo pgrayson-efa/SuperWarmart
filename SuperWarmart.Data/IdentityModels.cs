@@ -54,6 +54,9 @@ namespace SuperWarmart.Data
                 .Add(new IdentityUserLoginConfiguration())
                 .Add(new IdentityUserRoleConfiguration());
 
+            //modelBuilder.Entity<Order>().Ignore(t => t.OrderLineItem);
+            //base.OnModelCreating(modelBuilder);
+
         }
     }
 

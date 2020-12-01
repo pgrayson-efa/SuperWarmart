@@ -2,6 +2,7 @@
 using SuperWarmart.Model;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,7 +48,7 @@ namespace SuperWarmart.Service
         }
 
 
-        public IEnumerable<OrderListItem> GetOrder()
+        public async Task<IEnumerable<OrderListItem>> GetOrder()
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -66,11 +67,29 @@ namespace SuperWarmart.Service
                                     TotalCost = e.TotalCost,
                                     DateOfOrder = e.DateOfOrder,
                                     DateShipped = e.DateShipped,
-                                    OrderLineItems = e.OrderLineItems
-                                }
-                        );
+                                    OrderedItems = e.OrderLineItems.Select(i => new OrderLineItemListItem()
+                                    {
+                                        OrderLineItemId = i.OrderLineItemId,
+                                        QuantityOrdered = i.QuantityOrdered,
+                                        InventoryItem = new InventoryItemListItem()
+                                        {
+                                            InventoryItemId = i.InventoryItem.InventoryItemId,
+                                            UPC = i.InventoryItem.UPC,
+                                            StockNumber = i.InventoryItem.StockNumber,
+                                            ItemName = i.InventoryItem.ItemName,
+                                            Description = i.InventoryItem.Description,
+                                            Price = i.InventoryItem.Price,
+                                            QuantityInStock = i.InventoryItem.QuantityInStock,
+                                            InventoryItemCategoryId = i.InventoryItem.InventoryItemCategory.InventoryItemCategoryId,
+                                            InventoryItemCategoryName = i.InventoryItem.InventoryItemCategory.CategoryName
+                                        }
+                                    }).ToList()
+                                    //OrderLineItems = e.OrderLineItems, //JT object - want to go deeper
 
-                return query.ToArray();
+                                }
+                        ) ;
+
+                return await query.ToListAsync();
             }
         }
 
@@ -92,8 +111,8 @@ namespace SuperWarmart.Service
                         Tax = model.Tax,
                         TotalCost = model.TotalCost,
                         DateOfOrder = model.DateOfOrder,
-                        DateShipped = model.DateShipped,
-                        OrderLineItems = model.OrderLineItems
+                        DateShipped = model.DateShipped
+                        //OrderLineItems = model.OrderLineItems
                     };
             }
         }

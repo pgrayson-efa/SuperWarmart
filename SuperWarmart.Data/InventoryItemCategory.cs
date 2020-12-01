@@ -11,7 +11,7 @@ namespace SuperWarmart.Data
     public class InventoryItemCategory
     {
         [Key]
-        public int CategoryId { get; set; }
+        public int InventoryItemCategoryId { get; set; }
 
         [Required]
         public string CategoryName { get; set; }

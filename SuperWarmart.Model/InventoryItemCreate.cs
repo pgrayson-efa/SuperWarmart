@@ -13,7 +13,7 @@ namespace SuperWarmart.Model
 
         public string UPC { get; set; }
       
-        public int CategoryId { get; set; }
+        public int InventoryItemCategoryId { get; set; }
 
         public string StockNumber { get; set; }
 

@@ -8,7 +8,7 @@ namespace SuperWarmart.Model
 {
     public class InventoryItemCategoryCreate
     {
-        public int CategoryId { get; set; }
+        public int InventoryItemCategoryId { get; set; }
         public string CategoryName { get; set; }
     }
 }

@@ -6,16 +6,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace SuperWarmart.WebAPI.Controllers
 {
     public class OrderLineItemController : ApiController
     {
-        public IHttpActionResult Get()
+        public async Task<IHttpActionResult> Get()
         {
             OrderLineItemService orderLineItemService = CreateOrderLineItemService();
-            var orderLineItems = orderLineItemService.GetOrderLineItem();
+            var orderLineItems = await orderLineItemService.GetOrderLineItem();
+            return Ok(orderLineItems);
+        }
+        public async Task<IHttpActionResult> Get(int id)
+        {
+            OrderLineItemService orderLineItemService = CreateOrderLineItemService();
+            var orderLineItems = await orderLineItemService.GetOrderLineItemById(id);
             return Ok(orderLineItems);
         }
         public IHttpActionResult Post(OrderLineItemCreate orderLineItem)

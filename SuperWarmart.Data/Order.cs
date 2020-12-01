@@ -12,6 +12,8 @@ namespace SuperWarmart.Data
     {
         [Key]
         public int OrderId { get; set; }
+
+        //public virtual OrderLineItem OrderLineItem { get; set; }
         public virtual List<OrderLineItem> OrderLineItems { get; set; } = new List<OrderLineItem>();
 
         [Required]
