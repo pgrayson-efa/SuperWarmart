@@ -13,12 +13,17 @@ namespace SuperWarmart.WebAPI.Controllers
     [Authorize]
     public class ZipCodeController : ApiController
     {
-        public IHttpActionResult Get()
+        private ZipCodeService CreateZipCodeService()
         {
-            ZipCodeService zipCodeService = CreateZipCodeService();
-            var zipCodes = zipCodeService.GetZipCode();
-            return Ok(zipCodes);
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var zipCodeService = new ZipCodeService(userId);
+            return zipCodeService;
         }
+        /// <summary>
+        /// Add a new Zip Code
+        /// </summary>
+        /// <param name="zipCode"></param>
+        /// <returns></returns>
         public IHttpActionResult Post(ZipCodeCreate zipCode)
         {
             if (!ModelState.IsValid)
@@ -31,6 +36,21 @@ namespace SuperWarmart.WebAPI.Controllers
 
             return Ok();
         }
+        /// <summary>
+        /// Get all Zip Codes from the database
+        /// </summary>
+        /// <returns></returns>
+        public IHttpActionResult Get()
+        {
+            ZipCodeService zipCodeService = CreateZipCodeService();
+            var zipCodes = zipCodeService.GetZipCode();
+            return Ok(zipCodes);
+        }
+        /// <summary>
+        /// Delete an existing Zip Code from the database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public IHttpActionResult Delete(int id)
         {
             ZipCodeService zipCodeService = CreateZipCodeService();
@@ -40,12 +60,6 @@ namespace SuperWarmart.WebAPI.Controllers
                 return Ok(zipCodes);
             }
             return InternalServerError();
-        }
-        private ZipCodeService CreateZipCodeService()
-        {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var zipCodeService = new ZipCodeService(userId);
-            return zipCodeService;
         }
     }
 }

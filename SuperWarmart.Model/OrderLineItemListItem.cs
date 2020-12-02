@@ -10,10 +10,10 @@ namespace SuperWarmart.Model
 {
     public class OrderLineItemListItem
     {
-        public int OrderLineItemId { get; set; }
         public int OrderId { get; set; }
+        public int OrderLineItemId { get; set; }
         //public int InventoryItemId { get; set; }
-        public InventoryItemListItem InventoryItem { get; set; }
         public int QuantityOrdered { get; set; }
+        public InventoryItemListItem InventoryItem { get; set; }
     }
 }

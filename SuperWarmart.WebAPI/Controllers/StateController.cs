@@ -13,12 +13,17 @@ namespace SuperWarmart.WebAPI.Controllers
     [Authorize]
     public class StateController : ApiController
     {
-        public IHttpActionResult Get()
+        private StateService CreateStateService()
         {
-            StateService stateService = CreateStateService();
-            var states = stateService.GetState();
-            return Ok(states);
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var stateService = new StateService(userId);
+            return stateService;
         }
+        /// <summary>
+        /// Create a new State
+        /// </summary>
+        /// <param name="state"></param>
+        /// <returns></returns>
         public IHttpActionResult Post(StateCreate state)
         {
             if (!ModelState.IsValid)
@@ -31,12 +36,21 @@ namespace SuperWarmart.WebAPI.Controllers
 
             return Ok();
         }
-        private StateService CreateStateService()
+        /// <summary>
+        /// Get all States in the database
+        /// </summary>
+        /// <returns></returns>
+        public IHttpActionResult Get()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var stateService = new StateService(userId);
-            return stateService;
+            StateService stateService = CreateStateService();
+            var states = stateService.GetState();
+            return Ok(states);
         }
+        /// <summary>
+        /// Delete a State from the database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public IHttpActionResult Delete(int id)
         {
             StateService stateService = CreateStateService();

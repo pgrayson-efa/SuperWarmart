@@ -19,6 +19,7 @@ namespace SuperWarmart.Model
         public double TotalCost { get; set; }
         public DateTime DateOfOrder { get; set; }
         public DateTime DateShipped { get; set; }
-        public List<OrderLineItem> OrderLineItems { get; set; }
+        //public List<OrderLineItem> OrderLineItems { get; set; }
+        public List<OrderLineItemListItem> OrderedItems { get; set; }
     }
 }

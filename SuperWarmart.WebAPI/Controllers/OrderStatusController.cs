@@ -13,12 +13,17 @@ namespace SuperWarmart.WebAPI.Controllers
     [Authorize]
     public class OrderStatusController : ApiController
     {
-        public IHttpActionResult Get()
+        private OrderStatusService CreateOrderStatusService()
         {
-            OrderStatusService orderStatusService = CreateOrderStatusService();
-            var orderStatus = orderStatusService.GetOrderStatus();
-            return Ok(orderStatus);
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var orderStatusService = new OrderStatusService(userId);
+            return orderStatusService;
         }
+        /// <summary>
+        /// Create a new Order Status
+        /// </summary>
+        /// <param name="orderStatus"></param>
+        /// <returns></returns>
         public IHttpActionResult Post(OrderStatusCreate orderStatus)
         {
             if (!ModelState.IsValid)
@@ -30,12 +35,21 @@ namespace SuperWarmart.WebAPI.Controllers
 
             return Ok();
         }
-        private OrderStatusService CreateOrderStatusService()
+        /// <summary>
+        /// Get all Order Status options
+        /// </summary>
+        /// <returns></returns>
+        public IHttpActionResult Get()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var orderStatusService = new OrderStatusService(userId);
-            return orderStatusService;
+            OrderStatusService orderStatusService = CreateOrderStatusService();
+            var orderStatus = orderStatusService.GetOrderStatus();
+            return Ok(orderStatus);
         }
+        /// <summary>
+        /// Delete an Order Status option from the database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public IHttpActionResult Delete(int id)
         {
             OrderStatusService orderStatusService = CreateOrderStatusService();

@@ -22,6 +22,11 @@ namespace SuperWarmart.WebAPI.Controllers
             return ShippingAddressService;
         }
         // Create Shipping Address
+        /// <summary>
+        /// Create a new Shipping Address for a Customer
+        /// </summary>
+        /// <param name="shippingAddress"></param>
+        /// <returns></returns>
         public async Task<IHttpActionResult> Post(ShippingAddressCreate shippingAddress)
         {
             if (!ModelState.IsValid)
@@ -36,6 +41,10 @@ namespace SuperWarmart.WebAPI.Controllers
             return Ok();
         }
         // Get Shipping Address
+        /// <summary>
+        /// Get All Shipping Addresses for all Customers
+        /// </summary>
+        /// <returns></returns>
         public IHttpActionResult Get()
         {
             ShippingAddressService shippingAddressService = CreateShippingAddressService();
@@ -43,6 +52,11 @@ namespace SuperWarmart.WebAPI.Controllers
             return Ok(shippingAddresses);
         }
         // Get Shipping Address by Customer Id
+        /// <summary>
+        /// Get all Shipping Addresses associated with a Customer ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public IHttpActionResult Get(int id)
         {
             ShippingAddressService shippingAddressService = CreateShippingAddressService();
@@ -50,6 +64,12 @@ namespace SuperWarmart.WebAPI.Controllers
             return Ok(shippingAddresses);
         }
         // Update Shipping Address
+        /// <summary>
+        /// Update an existing Shipping Address in the database 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="shippingAddress"></param>
+        /// <returns></returns>
         public IHttpActionResult Put([FromUri] int id, [FromBody] ShippingAddressUpdate shippingAddress)
         {
             if (!ModelState.IsValid)
@@ -59,7 +79,11 @@ namespace SuperWarmart.WebAPI.Controllers
                 return InternalServerError();
             return Ok();
         }
-
+        /// <summary>
+        /// Delete a Shipping Address from the database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public IHttpActionResult DeleteShippingAddress(int id)
         {
             ShippingAddressService service = CreateShippingAddressService();

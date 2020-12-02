@@ -69,6 +69,7 @@ namespace SuperWarmart.Service
                                     DateShipped = e.DateShipped,
                                     OrderedItems = e.OrderLineItems.Select(i => new OrderLineItemListItem()
                                     {
+                                        OrderId = i.OrderId,
                                         OrderLineItemId = i.OrderLineItemId,
                                         QuantityOrdered = i.QuantityOrdered,
                                         InventoryItem = new InventoryItemListItem()
@@ -87,39 +88,97 @@ namespace SuperWarmart.Service
                                     //OrderLineItems = e.OrderLineItems, //JT object - want to go deeper
 
                                 }
-                        ) ;
+                        );
 
                 return await query.ToListAsync();
             }
         }
 
-        public OrderDetail GetOrderByOrderId(int id)
+        public async Task<OrderDetail> GetOrderByOrderId(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var model = ctx.Orders.Single(c => c.OrderId == id);
-
-                return
-                    new OrderDetail
+                var model = await ctx.Orders.SingleAsync(e => e.OrderId == id);
+                return new OrderDetail
+                {
+                    OwnerId = _userId,
+                    OrderId = model.OrderId,
+                    CustomerId = model.CustomerId,
+                    OrderStatus = model.OrderStatus,
+                    Notes = model.Notes,
+                    SubTotal = model.SubTotal,
+                    Tax = model.Tax,
+                    TotalCost = model.TotalCost,
+                    DateOfOrder = model.DateOfOrder,
+                    DateShipped = model.DateShipped,
+                    OrderedItems = model.OrderLineItems.Select(i => new OrderLineItemListItem()
                     {
-                        OwnerId = _userId,
-                        OrderId = model.OrderId,
-                        CustomerId = model.CustomerId,
-                        OrderStatus = model.OrderStatus,
-                        Notes = model.Notes,
-                        SubTotal = model.SubTotal,
-                        Tax = model.Tax,
-                        TotalCost = model.TotalCost,
-                        DateOfOrder = model.DateOfOrder,
-                        DateShipped = model.DateShipped
-                        //OrderLineItems = model.OrderLineItems
-                    };
+                        OrderId = i.OrderId,
+                        OrderLineItemId = i.OrderLineItemId,
+                        QuantityOrdered = i.QuantityOrdered,
+                        InventoryItem = new InventoryItemListItem()
+                        {
+                            InventoryItemId = i.InventoryItem.InventoryItemId,
+                            UPC = i.InventoryItem.UPC,
+                            StockNumber = i.InventoryItem.StockNumber,
+                            ItemName = i.InventoryItem.ItemName,
+                            Description = i.InventoryItem.Description,
+                            Price = i.InventoryItem.Price,
+                            QuantityInStock = i.InventoryItem.QuantityInStock,
+                            InventoryItemCategoryId = i.InventoryItem.InventoryItemCategory.InventoryItemCategoryId,
+                            InventoryItemCategoryName = i.InventoryItem.InventoryItemCategory.CategoryName
+                        }
+                    }).ToList()
+                    //OrderLineItems = e.OrderLineItems, //JT object - want to go deeper
+
+                };
+                
+            }
+        }   
+        
+
+                // var model = ctx.Orders.Single(c => c.OrderId == id);
+
+
+                //    return
+                //        new OrderDetail
+                //        {
+                //            OwnerId = _userId,
+                //            OrderId = model.OrderId,
+                //            CustomerId = model.CustomerId,
+                //            OrderStatus = model.OrderStatus,
+                //            Notes = model.Notes,
+                //            SubTotal = model.SubTotal,
+                //            Tax = model.Tax,
+                //            TotalCost = model.TotalCost,
+                //            DateOfOrder = model.DateOfOrder,
+                //            DateShipped = model.DateShipped,
+                //            OrderLineItems = model.OrderLineItems
+                //        };
+                //}
+            
+
+
+        public bool UpdateOrder(OrderUpdate model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Orders.Single(o => o.OrderId == model.OrderId);
+
+                entity.CustomerId = model.CustomerId;
+                entity.StatusId = model.StatusId;
+                entity.Notes = model.Notes;
+                entity.SubTotal = model.SubTotal;
+                entity.Tax = model.Tax;
+                entity.TotalCost = model.TotalCost;
+                entity.DateOfOrder = model.DateOfOrder;
+                entity.DateShipped = model.DateShipped;
+
+                return ctx.SaveChanges() == 1;
             }
         }
-
-
         public bool DeleteOrderByOrderId(int id)
-        { 
+        {
             using (var ctx = new ApplicationDbContext())
             {
 
@@ -139,24 +198,6 @@ namespace SuperWarmart.Service
 
                 return false;
 
-            }
-        }
-        public bool UpdateOrder(OrderUpdate model)
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var entity = ctx.Orders.Single(o => o.OrderId == model.OrderId);
-
-                entity.CustomerId = model.CustomerId;
-                entity.StatusId = model.StatusId;
-                entity.Notes = model.Notes;
-                entity.SubTotal = model.SubTotal;
-                entity.Tax = model.Tax;
-                entity.TotalCost = model.TotalCost;
-                entity.DateOfOrder = model.DateOfOrder;
-                entity.DateShipped = model.DateShipped;
-
-                return ctx.SaveChanges() == 1;
             }
         }
     }

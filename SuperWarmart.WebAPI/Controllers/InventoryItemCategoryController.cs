@@ -13,12 +13,17 @@ namespace SuperWarmart.WebAPI.Controllers
     [Authorize]
     public class InventoryItemCategoryController : ApiController
     {
-        public IHttpActionResult Get()
+        private InventoryItemCategoryService CreateInventoryItemCategoryService()
         {
-            InventoryItemCategoryService inventoryItemCategoryService = CreateInventoryItemCategoryService();
-            var inventoryItemCategories = inventoryItemCategoryService.GetInventoryItemCategory();
-            return Ok(inventoryItemCategories);
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var stateService = new InventoryItemCategoryService(userId);
+            return stateService;
         }
+        /// <summary>
+        /// Create a new Inventory Item Category
+        /// </summary>
+        /// <param name="inventoryItemCategory"></param>
+        /// <returns></returns>
         public IHttpActionResult Post(InventoryItemCategoryCreate inventoryItemCategory)
         {
             if (!ModelState.IsValid)
@@ -31,12 +36,21 @@ namespace SuperWarmart.WebAPI.Controllers
 
             return Ok();
         }
-        private InventoryItemCategoryService CreateInventoryItemCategoryService()
+        /// <summary>
+        /// Get All Inventory Item Categories in the database
+        /// </summary>
+        /// <returns></returns>
+        public IHttpActionResult Get()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var stateService = new InventoryItemCategoryService(userId);
-            return stateService;
+            InventoryItemCategoryService inventoryItemCategoryService = CreateInventoryItemCategoryService();
+            var inventoryItemCategories = inventoryItemCategoryService.GetInventoryItemCategory();
+            return Ok(inventoryItemCategories);
         }
+        /// <summary>
+        /// Delete an Inventory Item Category from the database.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public IHttpActionResult Delete(int id)
         {
             InventoryItemCategoryService inventoryItemCategoryService = CreateInventoryItemCategoryService();
