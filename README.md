@@ -26,6 +26,3 @@ Trello Board : \
 
 User Stories : \
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;https://docs.google.com/spreadsheets/d/1rOkyn2J7rg0BWckZs6vgaxWNrkBtwMKYiWmoj9Wj58o/edit#gid=0
-
-Web API: \
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;https://github.com/pgrayson-efa/SuperWarmart/tree/develop/WebAPI.md
