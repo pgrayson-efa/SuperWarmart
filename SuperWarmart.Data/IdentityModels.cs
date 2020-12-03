@@ -34,6 +34,15 @@ namespace SuperWarmart.Data
         }
 
         public DbSet<Customer> Customers { get; set; }
+        public DbSet<ShippingAddress> ShippingAddresses { get; set; }
+        public DbSet<ZipCode> ZipCodes { get; set; }
+        public DbSet<State> States { get; set; }
+        public DbSet<InventoryItem> InventoryItems { get; set; }
+        public DbSet<InventoryItemCategory> InventoryItemCategories { get; set; }
+        public DbSet<OrderStatus> OrderStatuses { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderLineItem> OrderLineItems { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder
@@ -44,6 +53,10 @@ namespace SuperWarmart.Data
                 .Configurations
                 .Add(new IdentityUserLoginConfiguration())
                 .Add(new IdentityUserRoleConfiguration());
+
+            //modelBuilder.Entity<Order>().Ignore(t => t.OrderLineItem);
+            //base.OnModelCreating(modelBuilder);
+
         }
     }
 
@@ -63,6 +76,4 @@ namespace SuperWarmart.Data
         }
 
     }
-
-
 }
