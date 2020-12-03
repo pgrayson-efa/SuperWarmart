@@ -14,28 +14,19 @@ namespace SuperWarmart.WebAPI.Controllers
     [Authorize]
     public class CustomerController : ApiController
     {
-        //Get all customers
-        public IHttpActionResult Get()
+        //Establish connection
+        private CustomerService CreateCustomerService()
         {
-            CustomerService customerService = CreateCustomerService();
-            var customers = customerService.GetCustomer();
-            return Ok(customers);
-        }
-        //Get customer by Id
-        public IHttpActionResult Get(int id)
-        {
-            CustomerService customerService = CreateCustomerService();
-            var customers = customerService.GetCustomerById(id);
-            return Ok(customers);
-        }
-        //Get customer by Name 
-        public IHttpActionResult Get(string lastName, string firstName)
-        {
-            CustomerService customerService = CreateCustomerService();
-            var customers = customerService.GetCustomerByName(lastName, firstName);
-            return Ok(customers);
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var customerService = new CustomerService(userId);
+            return customerService;
         }
         //Create new customer
+        /// <summary>
+        /// Create a New Customer
+        /// </summary>
+        /// <param name="customer"></param>
+        /// <returns></returns>
         public IHttpActionResult Post(CustomerCreate customer)
         {
             if (!ModelState.IsValid)
@@ -48,6 +39,42 @@ namespace SuperWarmart.WebAPI.Controllers
 
             return Ok();
         }
+        //Get all customers
+        /// <summary>
+        /// Get All Customers
+        /// </summary>
+        /// <returns></returns>
+        public IHttpActionResult Get()
+        {
+            CustomerService customerService = CreateCustomerService();
+            var customers = customerService.GetCustomer();
+            return Ok(customers);
+        }
+        //Get customer by Id
+        /// <summary>
+        /// Get a Customer by ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public IHttpActionResult Get(int id)
+        {
+            CustomerService customerService = CreateCustomerService();
+            var customers = customerService.GetCustomerById(id);
+            return Ok(customers);
+        }
+        //Get customer by Name 
+        /// <summary>
+        /// Get customer by LastName/FirstName
+        /// </summary>
+        /// <param name="lastName"></param>
+        /// <param name="firstName"></param>
+        /// <returns></returns>
+        public IHttpActionResult Get(string lastName, string firstName)
+        {
+            CustomerService customerService = CreateCustomerService();
+            var customers = customerService.GetCustomerByName(lastName, firstName);
+            return Ok(customers);
+        }
         //Update customer by ID
         public IHttpActionResult Put(CustomerUpdate customer)
         {
@@ -57,13 +84,6 @@ namespace SuperWarmart.WebAPI.Controllers
             if (!service.UpdateCustomer(customer))
                 return InternalServerError();
             return Ok();
-        }
-        //Establish connection
-        private CustomerService CreateCustomerService()
-        {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var customerService = new CustomerService(userId);
-            return customerService;
         }
     }
 }

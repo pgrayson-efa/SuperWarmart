@@ -13,12 +13,17 @@ namespace SuperWarmart.WebAPI.Controllers
     [Authorize]
     public class InventoryItemController : ApiController
     {
-        public IHttpActionResult Get()
+        private InventoryItemService CreateInventoryItemService()
         {
-            InventoryItemService InventoryItemService = CreateInventoryItemService();
-            var inventoryItems = InventoryItemService.GetInventoryItem();
-            return Ok(inventoryItems);
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var stateService = new InventoryItemService(userId);
+            return stateService;
         }
+        /// <summary>
+        /// Create a new Inventory Item
+        /// </summary>
+        /// <param name="inventoryItem"></param>
+        /// <returns></returns>
         public IHttpActionResult Post(InventoryItemCreate inventoryItem)
         {
             if (!ModelState.IsValid)
@@ -31,12 +36,21 @@ namespace SuperWarmart.WebAPI.Controllers
 
             return Ok();
         }
-        private InventoryItemService CreateInventoryItemService()
+        /// <summary>
+        /// Get All Inventory Items in the database
+        /// </summary>
+        /// <returns></returns>
+        public IHttpActionResult Get()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var stateService = new InventoryItemService(userId);
-            return stateService;
+            InventoryItemService InventoryItemService = CreateInventoryItemService();
+            var inventoryItems = InventoryItemService.GetInventoryItem();
+            return Ok(inventoryItems);
         }
+        /// <summary>
+        /// Delete an Inventory Item from the database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public IHttpActionResult Delete(int id)
         {
             InventoryItemService inventoryItemService = CreateInventoryItemService();

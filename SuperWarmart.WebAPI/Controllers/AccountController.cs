@@ -53,6 +53,10 @@ namespace SuperWarmart.WebAPI.Controllers
         public ISecureDataFormat<AuthenticationTicket> AccessTokenFormat { get; private set; }
 
         // GET api/Account/UserInfo
+        /// <summary>
+        /// Get Account Information
+        /// </summary>
+        /// <returns></returns>
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         [Route("UserInfo")]
         public UserInfoViewModel GetUserInfo()
@@ -68,6 +72,10 @@ namespace SuperWarmart.WebAPI.Controllers
         }
 
         // POST api/Account/Logout
+        /// <summary>
+        /// Logout of Account
+        /// </summary>
+        /// <returns></returns>
         [Route("Logout")]
         public IHttpActionResult Logout()
         {
@@ -76,6 +84,12 @@ namespace SuperWarmart.WebAPI.Controllers
         }
 
         // GET api/Account/ManageInfo?returnUrl=%2F&generateState=true
+        /// <summary>
+        /// Manage Account Information
+        /// </summary>
+        /// <param name="returnUrl"></param>
+        /// <param name="generateState"></param>
+        /// <returns></returns>
         [Route("ManageInfo")]
         public async Task<ManageInfoViewModel> GetManageInfo(string returnUrl, bool generateState = false)
         {
@@ -116,6 +130,11 @@ namespace SuperWarmart.WebAPI.Controllers
         }
 
         // POST api/Account/ChangePassword
+        /// <summary>
+        /// Change Account Password
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [Route("ChangePassword")]
         public async Task<IHttpActionResult> ChangePassword(ChangePasswordBindingModel model)
         {
@@ -136,6 +155,11 @@ namespace SuperWarmart.WebAPI.Controllers
         }
 
         // POST api/Account/SetPassword
+        /// <summary>
+        /// Set a Password for an Account
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [Route("SetPassword")]
         public async Task<IHttpActionResult> SetPassword(SetPasswordBindingModel model)
         {
@@ -155,6 +179,11 @@ namespace SuperWarmart.WebAPI.Controllers
         }
 
         // POST api/Account/AddExternalLogin
+        /// <summary>
+        /// Add External Login
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [Route("AddExternalLogin")]
         public async Task<IHttpActionResult> AddExternalLogin(AddExternalLoginBindingModel model)
         {
@@ -193,6 +222,11 @@ namespace SuperWarmart.WebAPI.Controllers
         }
 
         // POST api/Account/RemoveLogin
+        /// <summary>
+        /// Remove Login
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [Route("RemoveLogin")]
         public async Task<IHttpActionResult> RemoveLogin(RemoveLoginBindingModel model)
         {
@@ -222,6 +256,12 @@ namespace SuperWarmart.WebAPI.Controllers
         }
 
         // GET api/Account/ExternalLogin
+        /// <summary>
+        /// Get External Login
+        /// </summary>
+        /// <param name="provider"></param>
+        /// <param name="error"></param>
+        /// <returns></returns>
         [OverrideAuthentication]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalCookie)]
         [AllowAnonymous]
@@ -279,6 +319,12 @@ namespace SuperWarmart.WebAPI.Controllers
         }
 
         // GET api/Account/ExternalLogins?returnUrl=%2F&generateState=true
+        /// <summary>
+        /// Get External Logins
+        /// </summary>
+        /// <param name="returnUrl"></param>
+        /// <param name="generateState"></param>
+        /// <returns></returns>
         [AllowAnonymous]
         [Route("ExternalLogins")]
         public IEnumerable<ExternalLoginViewModel> GetExternalLogins(string returnUrl, bool generateState = false)
@@ -320,6 +366,11 @@ namespace SuperWarmart.WebAPI.Controllers
         }
 
         // POST api/Account/Register
+        /// <summary>
+        /// Register an Account
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [AllowAnonymous]
         [Route("Register")]
         public async Task<IHttpActionResult> Register(RegisterBindingModel model)
@@ -342,6 +393,11 @@ namespace SuperWarmart.WebAPI.Controllers
         }
 
         // POST api/Account/RegisterExternal
+        /// <summary>
+        /// Register an External Account
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [OverrideAuthentication]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         [Route("RegisterExternal")]
